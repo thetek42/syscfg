@@ -7,8 +7,6 @@ vim.opt_local.shiftwidth = 4
 vim.opt_local.softtabstop = 4
 vim.opt_local.tabstop = 4
 
-vim.g.zig_fmt_autosave = false
-
 local function setup_lsp ()
     if vim.fn.executable "gopls" ~= 1 then return end
     local root_files = { "go.mod", ".git" }

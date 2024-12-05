@@ -17,5 +17,4 @@ require "gitinteg"
 -- TODO session management
 -- TODO help shortcuts
 -- TODO textobjects
--- TODO new file auto content (e.g. header guards)
 -- TODO command to disable diagnostics and lsp stuff for buffers

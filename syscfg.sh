@@ -45,7 +45,8 @@ pkglist_programming=(
 	clang
 	cloc
 	linux-headers
-    nodejs
+	lua-language-server
+	nodejs
 	python
 )
 
@@ -54,13 +55,13 @@ pkglist_terminal=(
 	htop
 	man-db
 	man-pages
-    neovim
+	neovim
 	plocate
 	ripgrep
 	tldr
 	tmux
 	tree
-    tree-sitter-cli
+	tree-sitter-cli
 	unzip
 	wget
 	zsh
