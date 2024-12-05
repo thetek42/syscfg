@@ -53,6 +53,7 @@ pkglist_terminal=(
 	htop
 	man-db
 	man-pages
+    neovim
 	plocate
 	ripgrep
 	tldr
@@ -98,6 +99,7 @@ install_i3 () {
 		dmenu
 		i3
 		numlockx
+        xclip
 		xorg-server
 		xorg-xinit
 	)
