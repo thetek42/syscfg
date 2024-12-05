@@ -6,4 +6,4 @@
 [core]
 	editor = nvim
 [credential]
-	manager = store
+	helper = store
