@@ -1,4 +1,45 @@
 colors:
+  completion:
+    fg: '#d3c6aa'
+    even.bg: '#272e33'
+    odd.bg: '#22272b'
+    category: { bg: '#2e383c', fg: '#a7c080' }
+    category.border: { bottom: '#2e383c', top: '#2e383c' }
+    item.selected: { bg: '#3c4841', fg: '#d3c6aa' }
+    item.selected.border: { bottom: '#3c4841', top: '#3c4841' }
+    item.selected.match.fg: '#83c092'
+    match.fg: '#83c092'
+    scrollbar: { bg: '#22272b', fg: '#2e383c' }
+
+  hints:
+    bg: '#45443c'
+    fg: '#dbbc7f'
+    match.fg: '#f57d26'
+
+  statusbar:
+    caret: { bg: '#384b55', fg: '#7fbbb3' }
+    caret.selection: { bg: '#384b55', fg: '#7fbbb3' }
+    command: { bg: '#22272b', fg: '#a7c080' }
+    command.private: { bg: '#d699b6', fg: '#22272b' }
+    insert: { bg: '#45443c', fg: '#dbbc7f' }
+    normal: { bg: '#22272b', fg: '#d3c6aa' }
+    passthrough: { bg: '#493b40', fg: '#e67e80' }
+    private: { bg: '#d699b6', fg: '#22272b' }
+    progress.bg: '#9ba7b0'
+    url.fg: '#a7c080'
+    url.hover.fg: '#7fbbb3'
+    url.error.fg: '#e67e80'
+    url.warn.fg: '#e69875'
+    url.success.http.fg: '#e69875'
+    url.success.https.fg: '#a7c080'
+
+  tabs:
+    bar.bg: '#22272b'
+    even: { bg: '#272e33', fg: '#d3c6aa' }
+    odd: { bg: '#2e383c', fg: '#d3c6aa' }
+    selected.even: { bg: '#3c4841', fg: '#a7c080' }
+    selected.odd: { bg: '#3c4841', fg: '#a7c080' }
+
   webpage:
     preferred_color_scheme: dark
 

@@ -196,6 +196,5 @@ echo -e "\e[32m>> success!\e[0m"
 
 
 # TODO: decide on a font an install it
-# TODO: qutebrowser colours
 # TODO: firefox config (?)
 # TODO: status bar
