@@ -90,6 +90,12 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# colors             -> border  backgr  text    indic   childbd
+client.focused          #3c4841 #3c4841 #a7c080 #3c4841 #3c4841
+client.focused_inactive #22272b #22272b #70818f #22272b #22272b
+client.unfocused        #22272b #22272b #70818f #22272b #22272b
+client.urgent           #493b40 #493b40 #e67e80 #493b40 #493b40
+
 # bar
 bar {
         status_command i3status

@@ -196,7 +196,6 @@ echo -e "\e[32m>> success!\e[0m"
 
 
 # TODO: decide on a font an install it
-# TODO: i3 colours
 # TODO: qutebrowser colours
 # TODO: zathura config
 # TODO: firefox config (?)
