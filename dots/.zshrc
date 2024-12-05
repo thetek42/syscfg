@@ -81,6 +81,7 @@ alias chx="chmod +x"
 alias za="zathura"
 alias py="python3"
 alias grep="grep --color=auto"
+alias cdconf="cd ~/code/syscfg/dots/.config"
 
 ## utilities
 mcd () {

@@ -16,6 +16,7 @@ function M.setup ()
             hl["@function.builtin.zig"] = { link = "Orange" }
             hl["@keyword.import.zig"] = { link = "Orange" }
             hl["@keyword.modifier.zig"] = { link = "@keyword" }
+            hl["@markup.heading.ini"] = { link = "Orange", bold = false }
             hl["@punctuation.bracket"] = { link = "@punctuation.delimiter" }
             hl["@punctuation.special.rust"] = { link = "@punctuation.delimiter" }
             hl["@string.documentation"] = { link = "@comment.documentation" }

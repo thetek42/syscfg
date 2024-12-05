@@ -10,6 +10,7 @@ config_extra_packages=()
 # === PACKAGES =================================================================
 
 pkglist_essentials=(
+	pacman-contrib
 	polkit
 	stow
 	xdg-user-dirs
@@ -100,7 +101,8 @@ install_i3 () {
 		dmenu
 		i3
 		numlockx
-        xclip
+		polybar
+		xclip
 		xorg-server
 		xorg-xinit
 	)
@@ -197,4 +199,3 @@ echo -e "\e[32m>> success!\e[0m"
 
 # TODO: decide on a font an install it
 # TODO: firefox config (?)
-# TODO: status bar
