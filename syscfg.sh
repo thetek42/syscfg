@@ -154,7 +154,7 @@ install_zsh_plugins () {
 download_nvim_spell_files () {
 	local spell_dir="$HOME/.local/share/nvim/site/spell"
 	local download_url="http://ftp.vim.org/pub/vim/runtime/spell"
-	if [ ! -f "$HOME/.local/share/nvim/site/spell" ]; then
+	if [ ! -d "$spell_dir" ]; then
 		message "downloading nvim spell files"
 		mkdir -p "$spell_dir"
 		curl "$download_url/de.utf-8.spl" -o "$spell_dir/de.utf-8.spl"
@@ -197,6 +197,5 @@ echo -e "\e[32m>> success!\e[0m"
 
 # TODO: decide on a font an install it
 # TODO: qutebrowser colours
-# TODO: zathura config
 # TODO: firefox config (?)
 # TODO: status bar
