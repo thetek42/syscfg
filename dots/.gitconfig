@@ -1,0 +1,9 @@
+[init]
+	defaultBranch = main
+[user]
+	name = thetek
+	email = git@thetek.de
+[core]
+	editor = nvim
+[credential]
+	manager = store

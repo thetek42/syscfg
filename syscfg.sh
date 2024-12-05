@@ -1,0 +1,184 @@
+#!/usr/bin/env bash
+set -e
+
+# === CONFIGURATION ============================================================
+
+config_desktop=i3
+config_custom_keyboard_layout=true
+config_extra_packages=()
+
+# === PACKAGES =================================================================
+
+pkglist_essentials=(
+	polkit
+	stow
+	xdg-user-dirs
+)
+
+pkglist_graphical=(
+	alacritty
+	feh
+	#gimp
+	#inkscape
+	#libreoffice-fresh
+	mpv
+	#obs-studio
+	pavucontrol
+	zathura
+	zathura-djvu
+	zathura-pdf-mupdf
+)
+
+pkglist_internet=(
+	firefox
+	qutebrowser
+)
+
+pkglist_fonts=(
+	inter-font
+	noto-fonts-emoji
+)
+
+pkglist_progamming=(
+	bear
+	can-utils
+	clang
+	cloc
+	linux-headers
+	python
+)
+
+pkglist_terminal=(
+	fd
+	htop
+	man-db
+	man-pages
+	plocate
+	ripgrep
+	tldr
+	tmux
+	tree
+	unzip
+	wget
+	zsh
+)
+
+# === UTILITIES ================================================================
+
+message () {
+	echo -e "\e[36m>> $@\e[0m"
+}
+
+update_packages () {
+	message "updating packages"
+	sudo pacman -Syuq --noconfirm
+}
+
+install_packages () {
+	if [[ $# > 0 ]]; then
+		message "installing $@"
+		sudo pacman -Sq --noconfirm --needed $@
+	fi
+}
+
+die () {
+	echo -e "\e[31m>> error: $@\e[0m"
+	exit 1
+}
+
+trap_err () {
+	die "command \`$BASH_COMMAND\` failed with exit code \`$?\` (line $BASH_LINENO)"
+}
+
+# === MODULES ==================================================================
+
+install_i3 () {
+	local pkglist=(
+		adwaita-cursors
+		dmenu
+		i3
+		numlockx
+		xorg-server
+		xorg-xinit
+	)
+
+	install_packages ${pkglist[@]}
+}
+
+update_dotfiles () {
+	message "updating dotfiles"
+	stow -t ~ dots
+}
+
+configure_xdg_user_dirs () {
+	message "configuring user directories"
+	mkdir -p "$HOME/bin"
+	mkdir -p "$HOME/code"
+	mkdir -p "$HOME/dl"
+	mkdir -p "$HOME/docs"
+	mkdir -p "$HOME/img"
+	mkdir -p "$HOME/music"
+	mkdir -p "$HOME/probe"
+	mkdir -p "$HOME/vids"
+	mkdir -p "$HOME/tmp"
+	xdg-user-dirs-update
+}
+
+set_custom_keyboard_layout () {
+	message "setting custom keyboard layout"
+	sudo cp misc/keyboard-layout.xkb /usr/share/X11/xkb/symbols/demod
+	sudo localectl --no-convert set-x11-keymap demod "" "" "ctrl:nocaps,terminate:ctrl_alt_bksp"
+}
+
+change_shell_to_zsh () {
+	message "changing shell to zsh"
+	local user="$(whoami)"
+	local shell="$(which zsh)"
+	sudo chsh -s "$shell" "$user"
+}
+
+install_zsh_plugins () {
+	message "installing zsh plugins"
+	local plugin_dir="$HOME/.local/share/zsh-plugins"
+	mkdir -p "$plugin_dir"
+	if [ ! -d "$plugin_dir/zsh-vi-mode" ]; then
+		git clone "https://github.com/jeffreytse/zsh-vi-mode.git" "$plugin_dir/zsh-vi-mode" --depth=1
+	fi
+}
+
+# === MAIN =====================================================================
+
+# ensure that we print an error message when a command fails
+trap trap_err ERR
+
+update_packages
+
+install_packages ${pkglist_essentials[@]}
+install_packages ${pkglist_graphical[@]}
+install_packages ${pkglist_internet[@]}
+install_packages ${pkglist_fonts[@]}
+install_packages ${pkglist_terminal[@]}
+
+case "$config_desktop" in
+	"i3") install_i3 ;;
+	*)    die "unsupported desktop setting '$config_desktop'" ;;
+esac
+
+if [ "$config_custom_keyboard_layout" = true ]; then
+	set_custom_keyboard_layout
+fi
+
+update_dotfiles
+configure_xdg_user_dirs
+install_zsh_plugins
+
+if [ ! "$SHELL" = "$(which zsh)" ]; then
+	change_shell_to_zsh
+fi
+
+install_packages ${config_extra_packages[@]}
+
+echo -e "\e[32m>> success!\e[0m"
+
+
+# TODO: decide on a font an install it

@@ -1,0 +1,22 @@
+colors:
+  webpage:
+    preferred_color_scheme: dark
+
+content:
+  autoplay: false
+  javascript.clipboard: access
+  pdfjs: true
+
+fonts:
+  default_family: DM Mono
+  default_size: 10pt
+  web.family:
+    fixed: DM Mono
+    sans_serif: Inter
+    serif: Inter
+    standard: Inter
+
+tabs:
+  favicons.show: never
+  indicator.width: 0
+  max_width: 400
