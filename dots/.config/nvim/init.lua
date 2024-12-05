@@ -4,7 +4,6 @@ require "keymaps"
 require "autocmds"
 require "gitinteg"
 
--- TODO make theme on my own
 -- TODO git integration (also see vimways)
 -- TODO git difftool, mergetool
 -- TODO fuzzy find file

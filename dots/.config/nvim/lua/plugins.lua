@@ -2,10 +2,6 @@ local pluginmgr = require "pluginmgr"
 
 pluginmgr.init ()
 
--- color scheme
-pluginmgr.add "https://github.com/neanias/everforest-nvim"
-require "theme".setup ()
-
 -- treesitter
 pluginmgr.add "https://github.com/nvim-treesitter/nvim-treesitter"
 require "nvim-treesitter.configs".setup {
@@ -32,6 +28,10 @@ require "oil".setup {
         { "mtime", highlight = "Green" },
     },
 }
+
+-- mini.align
+pluginmgr.add "https://github.com/echasnovski/mini.align"
+require "mini.align".setup ()
 
 -- cfilter
 vim.cmd.packadd "cfilter"
