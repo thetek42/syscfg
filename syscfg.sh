@@ -39,12 +39,12 @@ pkglist_fonts=(
 	noto-fonts-emoji
 )
 
-pkglist_progamming=(
+pkglist_programming=(
 	bear
-	can-utils
 	clang
 	cloc
 	linux-headers
+    nodejs
 	python
 )
 
@@ -59,6 +59,7 @@ pkglist_terminal=(
 	tldr
 	tmux
 	tree
+    tree-sitter-cli
 	unzip
 	wget
 	zsh
@@ -133,10 +134,12 @@ set_custom_keyboard_layout () {
 }
 
 change_shell_to_zsh () {
-	message "changing shell to zsh"
-	local user="$(whoami)"
 	local shell="$(which zsh)"
-	sudo chsh -s "$shell" "$user"
+	if [ ! "$SHELL" = "$shell" ]; then
+		message "changing shell to zsh"
+		local user="$(whoami)"
+		sudo chsh -s "$shell" "$user"
+	fi
 }
 
 install_zsh_plugins () {
@@ -145,6 +148,16 @@ install_zsh_plugins () {
 	mkdir -p "$plugin_dir"
 	if [ ! -d "$plugin_dir/zsh-vi-mode" ]; then
 		git clone "https://github.com/jeffreytse/zsh-vi-mode.git" "$plugin_dir/zsh-vi-mode" --depth=1
+	fi
+}
+
+download_nvim_spell_files () {
+	local spell_dir="$HOME/.local/share/nvim/site/spell"
+	local download_url="http://ftp.vim.org/pub/vim/runtime/spell"
+	if [ ! -f "$HOME/.local/share/nvim/site/spell" ]; then
+		message "downloading nvim spell files"
+		mkdir -p "$spell_dir"
+		curl "$download_url/de.utf-8.spl" -o "$spell_dir/de.utf-8.spl"
 	fi
 }
 
@@ -159,6 +172,7 @@ install_packages ${pkglist_essentials[@]}
 install_packages ${pkglist_graphical[@]}
 install_packages ${pkglist_internet[@]}
 install_packages ${pkglist_fonts[@]}
+install_packages ${pkglist_programming[@]}
 install_packages ${pkglist_terminal[@]}
 
 case "$config_desktop" in
@@ -171,12 +185,10 @@ if [ "$config_custom_keyboard_layout" = true ]; then
 fi
 
 update_dotfiles
+download_nvim_spell_files
 configure_xdg_user_dirs
 install_zsh_plugins
-
-if [ ! "$SHELL" = "$(which zsh)" ]; then
-	change_shell_to_zsh
-fi
+change_shell_to_zsh
 
 install_packages ${config_extra_packages[@]}
 
@@ -184,3 +196,9 @@ echo -e "\e[32m>> success!\e[0m"
 
 
 # TODO: decide on a font an install it
+# TODO: i3 colours
+# TODO: alacritty config
+# TODO: qutebrowser colours
+# TODO: zathura config
+# TODO: firefox config (?)
+# TODO: status bar

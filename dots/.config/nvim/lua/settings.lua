@@ -28,6 +28,7 @@ vim.opt.completeopt:append { "menu", "menuone" }
 vim.opt.completeopt:remove { "preview" }
 vim.opt.diffopt:append { "algorithm:myers", "indent-heuristic" }
 vim.opt.formatoptions:append "n"
+vim.opt.runtimepath:append (vim.fn.stdpath ("data") .. "/site")
 vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append "<,>,[,],h,l"
 
