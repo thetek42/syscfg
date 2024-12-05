@@ -7,7 +7,7 @@ zstyle ":completion:*" menu select
 autoload -Uz promptinit
 promptinit
 prompt_mytheme_setup () {
-	PS1=" %F{6}%~%f %(?.%F{8}\$%f.%F{1}\$%f) "
+	PS1=" %F{2}%~%f %(?.%F{8}\$%f.%F{1}\$%f) "
 }
 prompt_themes+=(mytheme)
 prompt mytheme
