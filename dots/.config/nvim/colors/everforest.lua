@@ -65,7 +65,7 @@ local highlights = {
     DiffDelete       = { bg = p.bg_red },
     DiffText         = { fg = p.bg0, bg = p.blue },
     Directory        = { fg = p.yellow, bold = true },
-    EndOfBuffer      = { fg = p.none },
+    EndOfBuffer      = { fg = p.bg0 },
     ErrorMsg         = { fg = p.red, bold = true },
     FloatBorder      = { fg = p.grey1, bg = p.bg1 },
     FloatTitle       = { fg = p.grey1, bg = p.bg2, bold = true },
