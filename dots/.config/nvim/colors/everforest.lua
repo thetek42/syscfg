@@ -108,7 +108,7 @@ local highlights = {
     TermCursorNC     = { link = "Cursor" },
     Terminal         = { fg = p.fg, bg = p.bg0 },
     Title            = { fg = p.orange, bold = true },
-    VertSplit        = { fg = p.bg2, bg = p.bg2 },
+    VertSplit        = { fg = p.bg1, bg = p.bg1 },
     Visual           = { bg = p.bg_pink },
     VisualNOS        = { bg = p.bg_pink },
     WarningMsg       = { fg = p.yellow, bg = p.none, bold = true, },

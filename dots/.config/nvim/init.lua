@@ -9,7 +9,6 @@ require "gitinteg"
 -- TODO git integration (also see vimways)
 -- TODO git difftool, mergetool
 -- TODO fuzzy find file
--- TODO ripgrep integration
 -- TODO compile / make handling
 -- TODO errorformat
 -- TODO linters and compilers in .config/nvim/compiler/ (e.g. shellcheck, clippy) (see vimways)
