@@ -44,6 +44,8 @@ pkglist_programming=(
 	bear
 	clang
 	cloc
+	jdk-openjdk
+	jdk8-openjdk
 	linux-headers
 	lua-language-server
 	nodejs
@@ -65,6 +67,10 @@ pkglist_terminal=(
 	unzip
 	wget
 	zsh
+)
+
+pkglist_games=(
+	prismlauncher
 )
 
 # === UTILITIES ================================================================
@@ -106,6 +112,7 @@ install_i3 () {
 		xclip
 		xorg-server
 		xorg-xinit
+		xorg-xrandr
 	)
 
 	install_packages ${pkglist[@]}
@@ -177,6 +184,7 @@ install_packages ${pkglist_internet[@]}
 install_packages ${pkglist_fonts[@]}
 install_packages ${pkglist_programming[@]}
 install_packages ${pkglist_terminal[@]}
+install_packages ${pkglist_games[@]}
 
 case "$config_desktop" in
 	"i3") install_i3 ;;
