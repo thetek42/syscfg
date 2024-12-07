@@ -17,3 +17,4 @@ require "gitinteg"
 -- TODO help shortcuts
 -- TODO textobjects
 -- TODO command to disable diagnostics and lsp stuff for buffers
+-- TODO license templates

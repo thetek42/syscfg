@@ -188,7 +188,7 @@ local highlights = {
     ["@include"]                 = { link = "Include" },
     ["@keyword"]                 = { link = "Keyword" },
     ["@keyword.debug"]           = { link = "Debug" },
-    ["@keyword.function"]        = { link = "Orange" },
+    ["@keyword.function"]        = { link = "Keyword" },
     ["@keyword.modifier"]        = { link = "StorageClass" },
     ["@keyword.operator"]        = { link = "Operator" },
     ["@keyword.storage"]         = { link = "StorageClass" },

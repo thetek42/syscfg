@@ -25,12 +25,16 @@ local template_dir = "~/.config/nvim/templates"
 local templates = io.popen ("ls -1 " .. template_dir)
 if templates ~= nil then
     for filename in templates:lines () do
-        local extension = vim.fn.fnamemodify (filename, ":e")
+        local pattern = filename
+        if vim.startswith (filename, "_.") then
+            local extension = vim.fn.fnamemodify (filename, ":e")
+            pattern = "*." .. extension
+        end
         vim.api.nvim_create_autocmd ("BufNewFile", {
-            pattern = { "*." .. extension },
+            pattern = { pattern },
             callback = function ()
-                vim.cmd ("0read " .. template_dir .. "/template." .. extension)
-                vim.cmd ("%s/\\$TEMPLATE_FILENAME_UPPER\\$/" .. vim.fn.toupper (vim.fn.expand ("%:t:r")) .. "/ge")
+                vim.cmd ("silent 0read " .. template_dir .. "/" .. filename)
+                vim.cmd ("silent %s/\\$TEMPLATE_FILENAME_UPPER\\$/" .. vim.fn.toupper (vim.fn.expand ("%:t:r")) .. "/ge")
                 vim.cmd ("norm Gddgg")
             end,
         })

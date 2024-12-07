@@ -1,0 +1,13 @@
+{
+  "name": "",
+  "description": "",
+  "version": "0.1.0",
+  "author": "`thetek` <`mail@thetek.de`>",
+  "license": "MIT",
+  "main": "src/main.js",
+  "scripts": {
+    "run": "node src/main.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
