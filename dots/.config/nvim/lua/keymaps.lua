@@ -90,6 +90,24 @@ vim.keymap.set ("n", "<leader>ll", "<CMD>llast<CR>", opts)
 vim.keymap.set ("n", "<leader>lO", "<CMD>lolder<CR>", opts)
 vim.keymap.set ("n", "<leader>lN", "<CMD>lnewer<CR>", opts)
 
+local function grep_cursor_word ()
+    local mode = vim.fn.mode ()
+    local search
+    if mode == "n" then
+        search = vim.fn.expand ("<cword>")
+    elseif mode == "v" then
+        search = vim.fn.getline ("'<", "'>")[1]
+    else
+        return
+    end
+    vim.cmd ("silent lgrep \"" .. search .. "\"")
+    vim.cmd ("let @/ = '" .. search .. "'")
+    vim.cmd ("set hlsearch")
+    vim.cmd ("lopen")
+end
+
+vim.keymap.set ("n", "<leader>gf", grep_cursor_word, opts)
+
 -- diagnostics
 
 vim.keymap.set ("n", "<leader>do", toggle_list ("quickfix", function () vim.diagnostic.setqflist { open = true } end, vim.cmd.cclose), opts)
