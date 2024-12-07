@@ -1,3 +1,5 @@
+vim.cmd [[ colorscheme everforest ]]
+
 require "plugins"
 require "settings"
 require "keymaps"

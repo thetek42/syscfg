@@ -44,8 +44,6 @@ vim.opt.statusline = " " ..
     "%#StatusLineLocation#%5l:%-6(%c%V%)" ..
     "%#StatusLine#"
 
-vim.cmd [[ colorscheme everforest ]]
-
 vim.g.c_syntax_for_h = true
 vim.g.tex_flavor = "latex"
 
