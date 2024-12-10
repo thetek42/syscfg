@@ -45,7 +45,6 @@ pkglist_programming=(
 	clang
 	cloc
 	jdk-openjdk
-	jdk8-openjdk
 	linux-headers
 	lua-language-server
 	nodejs
