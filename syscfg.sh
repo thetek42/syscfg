@@ -45,6 +45,7 @@ pkglist_programming=(
 	bear
 	clang
 	cloc
+	cmake
 	jdk-openjdk
 	linux-headers
 	lua-language-server
