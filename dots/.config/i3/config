@@ -1,5 +1,5 @@
 # appearance
-font pango:DM Mono 12
+font pango:DM Mono 11
 
 # bar
 exec_always --no-startup-id ~/.config/polybar/polybar.sh
