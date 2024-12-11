@@ -279,6 +279,7 @@ local highlights = {
     ["@function.builtin.zig"]             = { link = "Orange" },
     ["@keyword.import.zig"]               = { link = "Orange" },
     ["@keyword.modifier.zig"]             = { link = "@keyword" },
+    ["@keyword.modifier.rust"]            = { link = "@keyword" },
     ["@markup.heading.1.markdown"]        = { fg = p.red, bold = true },
     ["@markup.heading.2.markdown"]        = { fg = p.orange, bold = true },
     ["@markup.heading.3.markdown"]        = { fg = p.yellow, bold = true },
