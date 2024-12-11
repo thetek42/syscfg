@@ -33,6 +33,7 @@ pkglist_graphical=(
 pkglist_internet=(
 	firefox
 	qutebrowser
+	yt-dlp
 )
 
 pkglist_fonts=(
@@ -59,6 +60,7 @@ pkglist_terminal=(
 	neovim
 	plocate
 	ripgrep
+	rustup
 	tldr
 	tmux
 	tree
@@ -208,3 +210,5 @@ echo -e "\e[32m>> success!\e[0m"
 # TODO: decide on a font an install it
 # TODO: firefox config (?)
 # TODO: centralise colour handling, maybe?
+# TODO: dmenu config
+# TODO: rustup install
