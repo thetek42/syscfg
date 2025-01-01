@@ -40,6 +40,7 @@ pkglist_internet=(
 pkglist_fonts=(
 	inter-font
 	noto-fonts-emoji
+	ttf-inconsolata
 )
 
 pkglist_programming=(
@@ -203,7 +204,6 @@ if [ "$config_custom_keyboard_layout" = true ]; then
 	set_custom_keyboard_layout
 fi
 
-download_tex_utils
 update_dotfiles
 download_nvim_spell_files
 configure_xdg_user_dirs
