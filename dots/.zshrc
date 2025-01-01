@@ -91,3 +91,7 @@ mcd () {
 
 ## keybindings
 source "$HOME/.local/share/zsh-plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+
+if [ -f "$HOME/.zcustom" ]; then
+    source "$HOME/.zcustom"
+fi
