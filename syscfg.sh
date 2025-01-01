@@ -220,3 +220,4 @@ echo -e "\e[32m>> success!\e[0m"
 # TODO: centralise colour handling, maybe?
 # TODO: dmenu config
 # TODO: rustup install
+# TODO: prevent ~/perl5 dir
