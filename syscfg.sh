@@ -32,6 +32,7 @@ pkglist_graphical=(
 
 pkglist_internet=(
 	firefox
+	pdfjs
 	qutebrowser
 	yt-dlp
 )
@@ -69,6 +70,10 @@ pkglist_terminal=(
 	unzip
 	wget
 	zsh
+)
+
+pkglist_tex=(
+	texlive
 )
 
 pkglist_games=(
@@ -186,6 +191,7 @@ install_packages ${pkglist_internet[@]}
 install_packages ${pkglist_fonts[@]}
 install_packages ${pkglist_programming[@]}
 install_packages ${pkglist_terminal[@]}
+install_packages ${pkglist_tex[@]}
 install_packages ${pkglist_games[@]}
 
 case "$config_desktop" in
@@ -197,6 +203,7 @@ if [ "$config_custom_keyboard_layout" = true ]; then
 	set_custom_keyboard_layout
 fi
 
+download_tex_utils
 update_dotfiles
 download_nvim_spell_files
 configure_xdg_user_dirs
