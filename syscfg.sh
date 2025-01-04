@@ -13,6 +13,7 @@ pkglist_essentials=(
 	pacman-contrib
 	polkit
 	stow
+	usbutils
 	xdg-user-dirs
 )
 
