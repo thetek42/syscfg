@@ -10,6 +10,7 @@ config_extra_packages=()
 # === PACKAGES =================================================================
 
 pkglist_essentials=(
+	fuse2
 	pacman-contrib
 	polkit
 	stow
@@ -222,3 +223,4 @@ echo -e "\e[32m>> success!\e[0m"
 # TODO: dmenu config
 # TODO: rustup install
 # TODO: prevent ~/perl5 dir
+# TODO: musescore config
