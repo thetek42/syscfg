@@ -90,6 +90,11 @@ mcd () {
 	mkdir -p -- "$1" &&
 	cd -P -- "$1"
 }
+watchmake () {
+    while inotifywait -e close_write "$1"; do
+        make
+    done
+}
 
 ## keybindings
 source "$HOME/.local/share/zsh-plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
