@@ -11,6 +11,7 @@ config_extra_packages=()
 
 pkglist_essentials=(
 	fuse2
+	inotify-tools
 	pacman-contrib
 	polkit
 	stow
@@ -50,6 +51,8 @@ pkglist_programming=(
 	clang
 	cloc
 	cmake
+	fasm
+	gdb
 	jdk-openjdk
 	linux-headers
 	lua-language-server
