@@ -10,11 +10,13 @@ config_extra_packages=()
 # === PACKAGES =================================================================
 
 pkglist_essentials=(
+	cups
 	fuse2
 	inotify-tools
 	pacman-contrib
 	polkit
 	stow
+	system-config-printer
 	usbutils
 	xdg-user-dirs
 )
@@ -184,6 +186,11 @@ download_nvim_spell_files () {
 	fi
 }
 
+setup_cups () {
+	sudo systemctl enable cups.service
+	sudo systemctl start cups.service
+}
+
 # === MAIN =====================================================================
 
 # ensure that we print an error message when a command fails
@@ -213,6 +220,7 @@ update_dotfiles
 download_nvim_spell_files
 configure_xdg_user_dirs
 install_zsh_plugins
+setup_cups
 change_shell_to_zsh
 
 install_packages ${config_extra_packages[@]}
