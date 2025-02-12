@@ -80,7 +80,6 @@ alias ..="cd .."
 alias md="mkdir"
 alias chx="chmod +x"
 alias wcl="wc -l"
-alias za="zathura"
 alias py="python3"
 alias grep="grep --color=auto"
 alias cdconf="cd ~/code/syscfg/dots/.config"
@@ -94,6 +93,9 @@ watchmake () {
     while inotifywait -e close_write "$1"; do
         make
     done
+}
+za () {
+    zathura "$1" & disown
 }
 
 ## keybindings
