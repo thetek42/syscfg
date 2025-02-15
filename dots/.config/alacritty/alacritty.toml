@@ -32,7 +32,7 @@ text   = "#22272b"
 cursor = "#d3c6aa"
 
 [cursor]
-unfocused_hollow = false
+unfocused_hollow = true
 thickness = 0.2
 
 [mouse]
