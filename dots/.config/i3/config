@@ -43,6 +43,7 @@ bindsym $mod+n       floating toggle
 bindsym $mod+p       focus mode_toggle
 bindsym $mod+a       focus parent
 bindsym $mod+d       focus child
+bindsym $mod+Shift+F floating enable, sticky enable, resize set 590 px 332 px, move window to position 1328 px 722 px
 
 # workspaces
 set $ws1 "1"
