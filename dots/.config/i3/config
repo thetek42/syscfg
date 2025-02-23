@@ -10,6 +10,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle && $refresh_i3status
 bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# floating window over fullscreen
+popup_during_fullscreen all
+
 # modifiers
 set $mod Mod4
 floating_modifier $mod
@@ -44,6 +47,7 @@ bindsym $mod+p       focus mode_toggle
 bindsym $mod+a       focus parent
 bindsym $mod+d       focus child
 bindsym $mod+Shift+F floating enable, sticky enable, resize set 590 px 332 px, move window to position 1328 px 722 px
+bindsym $mod+Shift+G floating enable, sticky enable, resize set 590 px 332 px, move window to position 1330 px 748 px
 
 # workspaces
 set $ws1 "1"
