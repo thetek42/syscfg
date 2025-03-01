@@ -46,6 +46,8 @@ pkglist_fonts=(
 	inter-font
 	noto-fonts-emoji
 	ttf-inconsolata
+	ttf-roboto
+	ttf-roboto-mono
 )
 
 pkglist_programming=(
