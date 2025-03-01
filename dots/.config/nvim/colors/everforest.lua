@@ -152,7 +152,7 @@ local highlights = {
     Tag            = { link = "Orange" },
     Todo           = { fg = p.bg0, bg = p.blue, bold = true },
     Type           = { link = "Yellow" },
-    Typedef        = { link = "Red" },
+    Typedef        = { link = "Yellow" },
 
     -- treesitter --------------------------------------------------------------
     ["@annotation"]              = { link = "Purple" },
@@ -170,7 +170,7 @@ local highlights = {
     ["@conditional"]             = { link = "Conditional" },
     ["@constant"]                = { link = "Constant" },
     ["@constant.builtin"]        = { link = "Orange" },
-    ["@constant.macro"]          = { link = "Macro" },
+    ["@constant.macro"]          = { link = "Constant" },
     ["@constant.regex"]          = { link = "String" },
     ["@constructor"]             = { link = "Function" },
     ["@debug"]                   = { link = "Debug" },
@@ -220,7 +220,7 @@ local highlights = {
     ["@parameter"]               = { link = "Identifier" },
     ["@parameter.reference"]     = { link = "Identifier" },
     ["@preproc"]                 = { link = "PreProc" },
-    ["@property"]                = { link = "Identifier" },
+    ["@property"]                = { link = "Fg" },
     ["@punctuation.bracket"]     = { link = "Delimiter" },
     ["@punctuation.delimiter"]   = { link = "Delimiter" },
     ["@punctuation.special"]     = { link = "Special" },
@@ -271,7 +271,7 @@ local highlights = {
     ["@variable"]                = { link = "Fg" },
     ["@variable.builtin"]        = { link = "Orange" },
     ["@variable.member"]         = { link = "Identifier" },
-    ["@variable.parameter"]      = { link = "Identifier" },
+    ["@variable.parameter"]      = { link = "Fg" },
 
     -- language specific treesitter overrides ----------------------------------
     ["@attribute.zig"]                    = { link = "@keyword" },
