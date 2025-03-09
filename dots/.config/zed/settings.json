@@ -1,0 +1,64 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  /***** user interface *****/
+  "features": {
+    "edit_prediction_provider": "none"
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "buffer_font_family": "DM Mono",
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "One Dark"
+  },
+  "indent_guides": {
+    "enabled": false
+  },
+  "tab_bar": {
+    "show_nav_history_buttons": false,
+    "show_tab_bar_buttons": false
+  },
+  "show_wrap_guides": true,
+  "relative_line_numbers": true,
+  "line_indicator_format": "short",
+
+  /***** editing *****/
+  "vim_mode": true,
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
+  "search": {
+    "regex": true
+  },
+
+  /***** file types *****/
+  "file_types": {
+    "C": ["c", "h"]
+  },
+
+  /***** languages *****/
+  "languages": {
+    /***** language: C *****/
+    "C": {
+      "tab_size": 8,
+      "hard_tabs": true,
+      "preferred_line_length": 80,
+      "wrap_guides": [80]
+    }
+  },
+
+  /***** miscellaneous *****/
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  }
+}
+// vi: ft=jsonc
