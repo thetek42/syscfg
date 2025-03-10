@@ -63,6 +63,7 @@ pkglist_programming=(
 	nodejs
 	python
 	zig
+	zls
 )
 
 pkglist_terminal=(
