@@ -29,6 +29,7 @@
   "show_wrap_guides": true,
   "relative_line_numbers": true,
   "line_indicator_format": "short",
+  "lsp_highlight_debounce": 99999999,
 
   /***** editing *****/
   "vim_mode": true,
@@ -46,7 +47,6 @@
 
   /***** languages *****/
   "languages": {
-    /***** language: C *****/
     "C": {
       "tab_size": 8,
       "hard_tabs": true,
