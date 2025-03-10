@@ -62,6 +62,7 @@ pkglist_programming=(
 	lua-language-server
 	nodejs
 	python
+	zig
 )
 
 pkglist_terminal=(
