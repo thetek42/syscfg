@@ -27,6 +27,7 @@ export MANPAGER="nvim \"+set signcolumn=no\" +Man!"
 ## path
 typeset -U path PATH
 path=(
+	~/.cargo/bin
 	~/.local/bin
 	~/bin
 	$path
