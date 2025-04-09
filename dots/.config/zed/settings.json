@@ -13,7 +13,7 @@
   },
   "ui_font_size": 16,
   "buffer_font_size": 16,
-  "buffer_font_family": "DM Mono",
+  "buffer_font_family": "Monaspace Neon",
   "theme": {
     "mode": "dark",
     "light": "One Light",
@@ -52,6 +52,23 @@
       "hard_tabs": true,
       "preferred_line_length": 80,
       "wrap_guides": [80]
+    },
+    "HTML": {
+      "format_on_save": "off"
+    },
+    "Markdown": {
+      "preferred_line_length": 100,
+      "wrap_guides": [100]
+    },
+    "Rust": {
+      "preferred_line_length": 120,
+      "wrap_guides": [120]
+    },
+    "TOML": {
+      "format_on_save": "off"
+    },
+    "Zig": {
+      "format_on_save": "off"
     }
   },
 
