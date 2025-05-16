@@ -20,6 +20,14 @@ vim.api.nvim_create_autocmd ("BufWritePre", {
     end,
 })
 
+-- interpret *.inc as assembly file
+vim.api.nvim_create_autocmd ({ "BufNewFile", "BufReadPost" }, {
+    pattern = "*.inc",
+    callback = function ()
+        vim.cmd [[ setfiletype nasm ]]
+    end,
+})
+
 -- file templates
 local template_dir = vim.fn.stdpath ("config") .. "/templates"
 local templates = io.popen ("ls -1 " .. template_dir)

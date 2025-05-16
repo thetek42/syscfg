@@ -277,6 +277,7 @@ local highlights = {
     ["@attribute.zig"]                    = { link = "@keyword" },
     ["@constructor.lua"]                  = { link = "Delimiter" },
     ["@function.builtin.zig"]             = { link = "Orange" },
+    ["@function.builtin.nasm"]            = { link = "Green" },
     ["@keyword.import.zig"]               = { link = "Orange" },
     ["@keyword.modifier.zig"]             = { link = "@keyword" },
     ["@keyword.modifier.rust"]            = { link = "@keyword" },
