@@ -2,7 +2,7 @@ CC     := gcc
 CFLAGS := -std=c23 -Isrc
 CFLAGS += -Wall -Wextra -Werror -Wdouble-promotion -Wconversion -pedantic
 CFLAGS += -Wno-sign-conversion -Wno-attributes -Wno-stringop-truncation
-CFLAGS += -DDEBUG -Og -ggdb3 -fsanitize=undefined
+CFLAGS += -DDEBUG -Og -ggdb3 -fsanitize=undefined,address,leak
 CLIBS  :=
 
 SRC_FILES := $(shell find src/ -type f -name "*.c")
@@ -23,7 +23,7 @@ clean:
 $(TARGET): $(OBJ_FILES)
 	@mkdir -p $(@D)
 	@echo -e '\x1b[36mLINK \x1b[0m $(TARGET)'
-	@$(CC) -shared $(CFLAGS) $(OBJ_FILES) -o $@ $(CLIBS)
+	@$(CC) $(CFLAGS) $(OBJ_FILES) -o $@ $(CLIBS)
 
 obj/%.o: src/%.c
 	@mkdir -p $(@D)
