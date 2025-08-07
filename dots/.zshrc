@@ -36,6 +36,7 @@ export PATH
 
 ## aliases
 # editor
+alias nvim="/home/tk/bin/nvim-0.12-nightly.appimage"
 alias e="nvim"
 alias vi="nvim"
 alias vim="nvim"
