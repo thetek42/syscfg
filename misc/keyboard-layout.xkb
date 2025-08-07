@@ -9,6 +9,8 @@ xkb_symbols "basic" {
     key <AD11> {[ backslash, bar, dead_diaeresis, dead_abovering ]};
     key <AC10> {[ braceleft, bracketleft, dead_doubleacute, dead_belowdot ]};
     key <AC11> {[ braceright, bracketright, dead_circumflex, dead_caron ]};
+    key <AB01> {[ y, Y, less, guillemotright ]};
+    key <AB02> {[ x, X, greater, guillemotleft ]};
 };
 
 // vi: ft=xkb
