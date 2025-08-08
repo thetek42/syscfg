@@ -83,10 +83,14 @@ local function grep_cursor_word ()
   vim.cmd ("lopen")
 end
 
+local function open_diagnostics ()
+  vim.diagnostic.setqflist { open = true }
+end
+
 vim.keymap.set ("n", "<leader>oq", toggle_list ("quickfix", vim.cmd.copen, vim.cmd.cclose), opts)
 vim.keymap.set ("n", "<leader>ol", toggle_list ("loclist", vim.cmd.lopen, vim.cmd.lclose), opts)
-vim.keymap.set ("n", "<leader>od", toggle_list ("quickfix", function () vim.diagnostic.setqflist { open = true } end, vim.cmd.cclose), opts)
-vim.keymap.set ("n", "<leader>lf", grep_cursor_word, opts)
+vim.keymap.set ("n", "<leader>od", toggle_list ("quickfix", open_diagnostics, vim.cmd.cclose), opts)
+vim.keymap.set ("n", "<leader>ow", grep_cursor_word, opts)
 
 -- language server
 vim.api.nvim_create_autocmd ("LspAttach", {
@@ -98,13 +102,11 @@ vim.api.nvim_create_autocmd ("LspAttach", {
 
     vim.keymap.set ("n", "gd", vim.lsp.buf.definition, opts_buf)
     vim.keymap.set ("n", "gD", vim.lsp.buf.declaration, opts_buf)
-    vim.keymap.set ("n", "<leader>ld", "<C-w>}", opts_buf) -- open in preview window
-    vim.keymap.set ("n", "<leader>lc", "<C-w>z", opts_buf) -- close preview window
-    vim.keymap.set ("n", "<leader>ls", vim.lsp.buf.document_symbol, opts_buf)
-    vim.keymap.set ("n", "<leader>lw", vim.lsp.buf.workspace_symbol, opts_buf)
-    vim.keymap.set ("n", "<leader>lf", function () vim.lsp.buf.format { async = true } end, opts_buf)
-    vim.keymap.set ("n", "<leader>th", toggle_inlay_hints, opts_buf)
-    vim.keymap.set ("n", "]d", function () vim.diagnostic.jump { count =  1, float = true } end, opts)
+    vim.keymap.set ("n", "grp", "<C-w>}", opts_buf) -- open in preview window
+    vim.keymap.set ("n", "gro", "<C-w>z", opts_buf) -- close preview window
+    vim.keymap.set ("n", "grf", function () vim.lsp.buf.format { async = true } end, opts_buf)
+    vim.keymap.set ("n", "]d", function () vim.diagnostic.jump { count = 1, float = true } end, opts)
     vim.keymap.set ("n", "[d", function () vim.diagnostic.jump { count = -1, float = true } end, opts)
+    vim.keymap.set ("n", "<leader>th", toggle_inlay_hints, opts_buf)
   end,
 })

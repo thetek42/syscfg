@@ -7,7 +7,10 @@ require "nvim-treesitter.configs".setup {
   ensure_installed = { "lua", "vimdoc" },
   auto_install = true,
   highlight = { enable = true },
-  indent = { enable = true },
+  indent = {
+    enable = true,
+    disable = { "c" },
+  },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -20,8 +23,8 @@ require "nvim-treesitter.configs".setup {
 require "oil".setup {
   columns = {
     { "permissions", highlight = "Grey" },
-    { "size", highlight = "Blue" },
-    { "mtime", highlight = "Green" },
+    { "size",        highlight = "Blue" },
+    { "mtime",       highlight = "Green" },
   },
 }
 

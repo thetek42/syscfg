@@ -1,4 +1,6 @@
 require "options"
 require "plugins"
-require "keymaps"
 require "autocmd"
+require "keymaps"
+require "lsp"
+require "skeletons"

@@ -1,7 +1,6 @@
 require "fileopt".configure {
-  width = 120,
   indent = {
-    soft = true,
-    width = 2,
+    soft = false,
+    width = 8,
   },
 }

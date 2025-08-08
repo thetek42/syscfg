@@ -1,0 +1,6 @@
+#ifndef $TEMPLATE_FILE_NAME_UPPER$_H_
+#define $TEMPLATE_FILE_NAME_UPPER$_H_
+
+
+
+#endif /* $TEMPLATE_FILE_NAME_UPPER$_H_ */

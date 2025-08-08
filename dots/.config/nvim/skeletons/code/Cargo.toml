@@ -1,0 +1,4 @@
+[package]
+name = "$TEMPLATE_DIR_NAME$"
+version = "0.1.0"
+edition = "2024"
