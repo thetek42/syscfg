@@ -1,7 +1,8 @@
 [font]
-normal = { family = "DM Mono" }
-size = 11
-offset = { y = 1 }
+normal = { family = "CommitMono" }
+size = 12
+offset = { y = 4 }
+glyph_offset = { y = 2 }
 
 [colors.primary]
 background = '#22272b'
