@@ -3,6 +3,7 @@ vim.lsp.enable {
   "elm",
   "lua",
   "rust",
+  "typst",
 }
 
 -- lsp: references in location list

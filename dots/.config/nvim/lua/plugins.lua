@@ -1,4 +1,5 @@
 vim.pack.add {
+  "https://github.com/chomosuke/typst-preview.nvim",
   "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/stevearc/oil.nvim",
 }
@@ -25,6 +26,14 @@ require "oil".setup {
     { "permissions", highlight = "Grey" },
     { "size",        highlight = "Blue" },
     { "mtime",       highlight = "Green" },
+  },
+}
+
+require "typst-preview".setup {
+  invert_colors = "always",
+  dependencies_bin = {
+    tinymist = "tinymist",
+    websocat = "websocat",
   },
 }
 
