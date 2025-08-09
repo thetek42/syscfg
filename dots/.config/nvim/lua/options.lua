@@ -28,7 +28,7 @@ vim.opt.tabstop = 4
 vim.opt.undofile = true
 vim.opt.virtualedit = { "block" }
 vim.opt.whichwrap:append "<,>,[,],h,l"
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.writebackup = false
 
 vim.opt.statusline = " " ..
