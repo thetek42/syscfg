@@ -22,7 +22,8 @@ SAVEHIST=10000
 ## environment variables
 export EDITOR=nvim
 export VISUAL=nvim
-export MANPAGER="nvim \"+set signcolumn=no\" +Man!"
+#export MANPAGER="nvim \"+set signcolumn=no\" +Man!"
+export MANPAGER="/home/tk/bin/nvim-0.12-nightly.appimage \"+set signcolumn=no\" +Man!"
 
 ## path
 typeset -U path PATH
