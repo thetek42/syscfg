@@ -3,7 +3,7 @@ set -e
 
 # === CONFIGURATION ============================================================
 
-config_desktop=i3
+config_desktop=dwl
 config_custom_keyboard_layout=true
 config_extra_packages=()
 
@@ -22,30 +22,22 @@ pkglist_essentials=(
 )
 
 pkglist_graphical=(
-	alacritty
 	feh
-	#gimp
-	#inkscape
-	#libreoffice-fresh
 	mpv
-	#obs-studio
 	pavucontrol
 	zathura
-	zathura-djvu
 	zathura-pdf-mupdf
 )
 
 pkglist_internet=(
 	firefox
 	pdfjs
-	qutebrowser
 	yt-dlp
 )
 
 pkglist_fonts=(
 	inter-font
 	noto-fonts-emoji
-	ttf-inconsolata
 	ttf-roboto
 	ttf-roboto-mono
 )
@@ -54,16 +46,11 @@ pkglist_programming=(
 	bear
 	clang
 	cloc
-	cmake
-	fasm
 	gdb
-	jdk-openjdk
 	linux-headers
-	lua-language-server
-	nodejs
 	python
+	rustup
 	zig
-	zls
 )
 
 pkglist_terminal=(
@@ -74,22 +61,11 @@ pkglist_terminal=(
 	neovim
 	plocate
 	ripgrep
-	rustup
-	tldr
-	tmux
 	tree
 	tree-sitter-cli
 	unzip
 	wget
 	zsh
-)
-
-pkglist_tex=(
-	texlive
-)
-
-pkglist_games=(
-	prismlauncher
 )
 
 # === UTILITIES ================================================================
@@ -121,20 +97,26 @@ trap_err () {
 
 # === MODULES ==================================================================
 
-install_i3 () {
-	local pkglist=(
-		adwaita-cursors
-		dmenu
-		i3
-		numlockx
-		polybar
-		xclip
-		xorg-server
-		xorg-xinit
-		xorg-xrandr
-	)
+disable_pc_speaker () {
+	message "disabling pc speaker"
+	sudo rmmod pcspkr || true
+	sudo rmmod snd_pcsp || true
+}
 
+install_dwl () {
+	local pkglist=(
+		foot
+		wmenu
+	)
 	install_packages ${pkglist[@]}
+	# TODO: actually install dwl by cloning source and compiling it
+}
+
+configure_mirrors () {
+	install_packages reflector
+	message "configuring mirrors"
+	sudo systemctl enable reflector.timer
+	sudo systemctl start reflector.service
 }
 
 update_dotfiles () {
@@ -166,8 +148,7 @@ change_shell_to_zsh () {
 	local shell="$(which zsh)"
 	if [ ! "$SHELL" = "$shell" ]; then
 		message "changing shell to zsh"
-		local user="$(whoami)"
-		sudo chsh -s "$shell" "$user"
+		sudo chsh -s "$shell" "$(whoami)"
 	fi
 }
 
@@ -190,7 +171,13 @@ download_nvim_spell_files () {
 	fi
 }
 
+setup_plocate_database () {
+	message "setting up plocate database"
+	sudo updatedb
+}
+
 setup_cups () {
+	message "setting up cups"
 	sudo systemctl enable cups.service
 	sudo systemctl start cups.service
 }
@@ -201,6 +188,7 @@ setup_cups () {
 trap trap_err ERR
 
 update_packages
+configure_mirrors
 
 install_packages ${pkglist_essentials[@]}
 install_packages ${pkglist_graphical[@]}
@@ -208,22 +196,22 @@ install_packages ${pkglist_internet[@]}
 install_packages ${pkglist_fonts[@]}
 install_packages ${pkglist_programming[@]}
 install_packages ${pkglist_terminal[@]}
-install_packages ${pkglist_tex[@]}
-install_packages ${pkglist_games[@]}
 
 case "$config_desktop" in
-	"i3") install_i3 ;;
-	*)    die "unsupported desktop setting '$config_desktop'" ;;
+	"dwl") install_dwl ;;
+	*)     die "unsupported desktop setting '$config_desktop'" ;;
 esac
 
 if [ "$config_custom_keyboard_layout" = true ]; then
 	set_custom_keyboard_layout
 fi
 
+disable_pc_speaker
 update_dotfiles
-download_nvim_spell_files
+#download_nvim_spell_files
 configure_xdg_user_dirs
 install_zsh_plugins
+setup_plocate_database
 setup_cups
 change_shell_to_zsh
 
@@ -239,3 +227,4 @@ echo -e "\e[32m>> success!\e[0m"
 # TODO: rustup install
 # TODO: prevent ~/perl5 dir
 # TODO: musescore config
+# TODO: actually run rustup
