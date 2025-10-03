@@ -259,10 +259,8 @@ echo -e "\e[32m>> success!\e[0m"
 
 
 # TODO: decide on a font an install it
-# TODO: firefox config (?)
 # TODO: centralise colour handling, maybe?
-# TODO: dmenu config
 # TODO: rustup install
-# TODO: prevent ~/perl5 dir
 # TODO: musescore config
-# TODO: actually run rustup
+# TODO: rewrite in python with actual config and nicer ui
+# TODO: laptop optimisations
