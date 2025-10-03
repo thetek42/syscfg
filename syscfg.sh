@@ -142,12 +142,7 @@ configure_mirrors () {
 
 update_dotfiles () {
 	message "updating dotfiles"
-	mkdir -p "$HOME/bin"
-	mkdir -p "$HOME/.config"
-	mkdir -p "$HOME/.config/Signal"
-	mkdir -p "$HOME/.mozilla/firefox/myprofile"
-	rm -f "$HOME/.mozilla/firefox/myprofile/search.json.mozlz4"
-	stow -t ~ dots
+	./update_dotfiles.sh
 }
 
 configure_xdg_user_dirs () {
