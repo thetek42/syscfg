@@ -103,6 +103,12 @@ za () {
 ## keybindings
 source "$HOME/.local/share/zsh-plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
+## load dircolors
+if [ -f ~/.dircolors ]; then
+    eval $(dircolors "$HOME/.dircolors")
+fi
+
+## load custom zsh settings
 if [ -f "$HOME/.zcustom" ]; then
     source "$HOME/.zcustom"
 fi
