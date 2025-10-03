@@ -142,8 +142,9 @@ configure_mirrors () {
 
 update_dotfiles () {
 	message "updating dotfiles"
-	mkdir -p "$HOME/.config"
 	mkdir -p "$HOME/bin"
+	mkdir -p "$HOME/.config"
+	mkdir -p "$HOME/.mozilla/firefox/myprofile"
 	stow -t ~ dots
 }
 

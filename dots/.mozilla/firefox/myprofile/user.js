@@ -1,0 +1,123 @@
+// get rid of default rubbish and popups
+user_pref("browser.aboutConfig.showWarning", false);
+user_pref("browser.aboutwelcome.enabled", false);
+user_pref("browser.discovery.enabled", false);
+user_pref("browser.ml.chat.enabled", false);
+user_pref("browser.ml.enable", false);
+user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
+user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false);
+user_pref("browser.newtabpage.activity-stream.default.sites", "");
+user_pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
+user_pref("browser.newtabpage.activity-stream.feeds.topsites", false);
+user_pref("browser.newtabpage.activity-stream.showSearch", false);
+user_pref("browser.newtabpage.activity-stream.showSponsored", false);
+user_pref("browser.newtabpage.activity-stream.showSponsoredCheckboxes", false);
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+user_pref("browser.preferences.moreFromMozilla", false);
+user_pref("browser.privatebrowsing.vpnpromourl", "");
+user_pref("browser.profiles.enabled", true);
+user_pref("browser.shell.checkDefaultBrowser", false);
+user_pref("browser.startup.couldRestoreSession.count", 2);
+user_pref("browser.toolbarbuttons.introduced.sidebar-button", true);
+user_pref("browser.toolbars.bookmarks.visibility", "never");
+user_pref("browser.uitour.enabled", false);
+user_pref("browser.urlbar.trending.featureGate", false);
+user_pref("extensions.colorway-builtin-themes-cleanup", 1);
+user_pref("extensions.getAddons.showPane", false);
+user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
+user_pref("extensions.pocket.enabled", false);
+user_pref("full-screen-api.transition-duration.enter", "0 0");
+user_pref("full-screen-api.transition-duration.leave", "0 0");
+user_pref("full-screen-api.warning.timeout", 0);
+user_pref("sidebar.backupState", "{\"command\":\"\",\"panelOpen\":false,\"launcherWidth\":0,\"launcherExpanded\":false,\"launcherVisible\":false,\"pinnedTabsHeight\":0,\"toolsHeight\":0,\"collapsedToolsHeight\":0}");
+user_pref("sidebar.new-sidebar.has-used", true);
+user_pref("sidebar.visibility", "hide-sidebar");
+user_pref("trailhead.firstrun.didSeeAboutWelcome", true);
+user_pref("signon.firefoxRelay.feature", "disabled");
+
+// mozilla cares about privacy, right? ...right?
+user_pref("app.normandy.api_url", "");
+user_pref("app.normandy.enabled", false);
+user_pref("app.shield.optoutstudies.enabled", false);
+user_pref("breakpad.reportURL", "");
+user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.telemetry", false);
+user_pref("browser.search.update", false);
+user_pref("browser.tabs.crashReporting.sendReport", false);
+user_pref("datareporting.healthreport.uploadEnabled", false);
+user_pref("datareporting.policy.dataSubmissionEnabled", false);
+user_pref("datareporting.usage.uploadEnabled", false);
+user_pref("extensions.formautofill.addresses.enabled", false);
+user_pref("extensions.formautofill.creditCards.enabled", false);
+user_pref("extensions.getAddons.cache.enabled", false);
+user_pref("geo.provider.network.url", "https://beacondb.net/v1/geolocate");
+user_pref("permissions.default.desktop-notification", 2);
+user_pref("permissions.default.geo", 2);
+user_pref("permissions.manager.defaultsUrl", "");
+user_pref("signon.autofillForms", false);
+user_pref("signon.generation.enabled", false);
+user_pref("toolkit.coverage.endpoint.base", "");
+user_pref("toolkit.coverage.opt-out", true);
+user_pref("toolkit.telemetry.archive.enabled", false);
+user_pref("toolkit.telemetry.bhrPing.enabled", false);
+user_pref("toolkit.telemetry.coverage.opt-out", true);
+user_pref("toolkit.telemetry.enabled", false);
+user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
+user_pref("toolkit.telemetry.newProfilePing.enabled", false);
+user_pref("toolkit.telemetry.server", "data:,");
+user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
+user_pref("toolkit.telemetry.unified", false);
+user_pref("toolkit.telemetry.updatePing.enabled", false);
+
+// other stuff
+user_pref("browser.bookmarks.addedImportButton", true);
+user_pref("browser.bookmarks.openInTabClosesMenu", false);
+user_pref("browser.download.manager.addToRecentDocs", false);
+user_pref("browser.download.open_pdf_attachments_inline", true);
+user_pref("browser.download.useDownloadDir", false);
+user_pref("browser.formfill.enable", false);
+user_pref("browser.menu.showViewImageInfo", true);
+user_pref("browser.preferences.experimental.hidden", false);
+user_pref("browser.safebrowsing.downloads.remote.enabled", false);
+user_pref("browser.search.separatePrivateDefault.ui.enabled", true);
+user_pref("browser.search.suggest.enabled", false);
+user_pref("browser.tabs.groups.smart.userEnabled", false);
+user_pref("browser.tabs.hoverPreview.showThumbnails", false);
+user_pref("browser.urlbar.groupLabels.enabled", false);
+user_pref("browser.urlbar.placeholderName", "DuckDuckGo");
+user_pref("browser.urlbar.placeholderName.private", "DuckDuckGo");
+user_pref("browser.urlbar.quicksuggest.enabled", false);
+user_pref("browser.urlbar.trimHttps", true);
+user_pref("browser.urlbar.untrimOnUserInteraction.featureGate", true);
+user_pref("distribution.archlinux.bookmarksProcessed", true);
+user_pref("extensions.enabledScopes", 5);
+user_pref("findbar.highlightAll", true);
+user_pref("intl.locale.requested", "en-US,de");
+user_pref("intl.regional_prefs.use_os_locales", true);
+user_pref("layout.spellcheckDefault", 0);
+user_pref("layout.word_select.eat_space_to_next_word", false);
+user_pref("network.IDN_show_punycode", true);
+user_pref("network.http.referer.XOriginTrimmingPolicy", 2);
+user_pref("pdfjs.enableScripting", false);
+user_pref("privacy.userContext.ui.enabled", true);
+user_pref("security.mixed_content.block_display_content", true);
+
+// devtools
+user_pref("devtools.everOpened", true);
+user_pref("devtools.inspector.showUserAgentStyles", true);
+user_pref("devtools.toolbox.host", "right");
+
+// theme adjustments
+user_pref("browser.compactmode.show", true);
+user_pref("browser.privateWindowSeparation.enabled", false);
+user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org");
+user_pref("font.default.x-western", "sans-serif");
+user_pref("font.name.monospace.x-western", "Adwaita Mono");
+user_pref("font.name.sans-serif.x-western", "Adwaita Sans");
+user_pref("font.name.serif.x-western", "Adwaita Sans");
+user_pref("font.size.monospace.x-western", 16);
+user_pref("layout.css.prefers-color-scheme.content-override", 0);
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
+// ui layout
+user_pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-list\": [],\"unified-extensions-area\":[\"_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action\",\"sponsorblocker_ajay_app-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"_0d7cafdd-501c-49ca-8ebb-e3341caaa55e_-browser-action\",\"addon_darkreader_org-browser-action\"],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"customizableui-special-spring1\",\"vertical-spacer\",\"urlbar-container\",\"customizableui-special-spring2\",\"downloads-button\",\"unified-extensions-button\"],\"toolbar-menubar\":[\"menubar-items\"],\"TabsToolbar\":[\"tabbrowser-tabs\"],\"vertical-tabs\":[],\"PersonalToolbar\":[\"personal-bookmarks\"]},\"seen\":[\"developer-button\",\"screenshot-button\",\"ublock0_raymondhill_net-browser-action\",\"sponsorblocker_ajay_app-browser-action\",\"_0d7cafdd-501c-49ca-8ebb-e3341caaa55e_-browser-action\",\"_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action\",\"addon_darkreader_org-browser-action\"],\"dirtyAreaCache\":[\"nav-bar\",\"vertical-tabs\",\"PersonalToolbar\",\"TabsToolbar\",\"unified-extensions-area\",\"toolbar-menubar\"],\"currentVersion\":23,\"newElementCount\":3}");
