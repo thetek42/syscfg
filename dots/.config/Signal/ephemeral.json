@@ -1,0 +1,15 @@
+{
+  "localeOverride": null,
+  "system-tray-setting": "DoNotUseSystemTray",
+  "spell-check": true,
+  "theme-setting": "dark",
+  "window": {
+    "maximized": false,
+    "autoHideMenuBar": true,
+    "fullscreen": false,
+    "width": 1918,
+    "height": 1058,
+    "x": 0,
+    "y": 0
+  }
+}
