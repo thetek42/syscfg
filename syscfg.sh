@@ -101,12 +101,27 @@ disable_pc_speaker () {
 	message "disabling pc speaker"
 	sudo rmmod pcspkr || true
 	sudo rmmod snd_pcsp || true
+	echo "blacklist pcspkr" | sudo tee /etc/modprobe.d/nobeep.conf
+	echo "blacklist snd_pcsp" | sudo tee /etc/modprobe.d/nobeep.conf -a
 }
 
 install_dwl () {
 	local pkglist=(
+		fcft
 		foot
+		grim
+		libinput
+		libxcb
+		libxkbcommon
+		pixman
+		slurp
+		tllist
+		wayland
+		wayland-protocols
+		wl-clipboard
+		wlroots0.19
 		wmenu
+		xorg-xwayland
 	)
 	install_packages ${pkglist[@]}
 	# TODO: actually install dwl by cloning source and compiling it
@@ -121,12 +136,13 @@ configure_mirrors () {
 
 update_dotfiles () {
 	message "updating dotfiles"
+	mkdir -p "$HOME/.config"
+	mkdir -p "$HOME/bin"
 	stow -t ~ dots
 }
 
 configure_xdg_user_dirs () {
 	message "configuring user directories"
-	mkdir -p "$HOME/bin"
 	mkdir -p "$HOME/code"
 	mkdir -p "$HOME/dl"
 	mkdir -p "$HOME/docs"

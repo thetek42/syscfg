@@ -20,10 +20,10 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 ## environment variables
-export EDITOR=nvim
-export VISUAL=nvim
-#export MANPAGER="nvim \"+set signcolumn=no\" +Man!"
-export MANPAGER="/home/tk/bin/nvim-0.12-nightly.appimage \"+set signcolumn=no\" +Man!"
+NVIM="$HOME/bin/nvim.appimage"
+export EDITOR=$NVIM
+export VISUAL=$NVIM
+export MANPAGER="$NVIM \"+set signcolumn=no\" +Man!"
 
 ## path
 typeset -U path PATH
@@ -37,10 +37,9 @@ export PATH
 
 ## aliases
 # editor
-alias nvim="/home/tk/bin/nvim-0.12-nightly.appimage"
-alias e="nvim"
-alias vi="nvim"
-alias vim="nvim"
+alias e="$NVIM"
+alias vi="$NVIM"
+alias vim="$NVIM"
 # ls
 alias ls="ls --color=auto -h"
 alias l="ls -1"

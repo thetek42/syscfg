@@ -1,3 +1,3 @@
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-	startx
+	/home/tk/code/slstatus/slstatus -s | /home/tk/code/dwl/dwl
 fi
