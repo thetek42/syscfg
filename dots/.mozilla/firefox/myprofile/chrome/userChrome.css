@@ -120,35 +120,7 @@
   background: -moz-Dialog !important;
 }
 
-/*  Tabs close button  */
-.tabbrowser-tab:not(:hover) .tab-close-button {
-  opacity: 0% !important;
-  transition: 0.3s !important;
-  display: -moz-box !important;
-}
-.tab-close-button[selected]:not(:hover) {
-  opacity: 45% !important;
-  transition: 0.3s !important;
-  display: -moz-box !important;
-}
-.tabbrowser-tab:hover .tab-close-button {
-  opacity: 50%;
-  transition: 0.3s !important;
-  background: none !important;
-  cursor: pointer;
-  display: -moz-box !important;
-}
-.tab-close-button:hover {
-  opacity: 100% !important;
-  transition: 0.3s !important;
-  background: none !important;
-  cursor: pointer;
-  display: -moz-box !important;
-}
-.tab-close-button[selected]:hover {
-  opacity: 100% !important;
-  transition: 0.3s !important;
-  background: none !important;
-  cursor: pointer;
-  display: -moz-box !important;
+/* Hide Tab Close buttons */
+.tabbrowser-tab .tab-close-button {
+  visibility: collapse !important;
 }
