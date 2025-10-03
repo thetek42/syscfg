@@ -171,6 +171,10 @@ change_shell_to_zsh () {
 	if [ ! "$SHELL" = "$shell" ]; then
 		message "changing shell to zsh"
 		sudo chsh -s "$shell" "$(whoami)"
+		rm -f ~/.bash_history
+		rm -f ~/.bash_logout
+		rm -f ~/.bash_profile
+		rm -f ~/.bashrc
 	fi
 }
 
