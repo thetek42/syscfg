@@ -97,6 +97,12 @@ trap_err () {
 
 # === MODULES ==================================================================
 
+configure_groups () {
+	message "configuring user groups"
+	sudo usermod -a -G video "$(whoami)"
+	echo 'ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp video $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"' | sudo tee /etc/udev/rules.d/backlight.rules
+}
+
 disable_pc_speaker () {
 	message "disabling pc speaker"
 	sudo rmmod pcspkr || true
@@ -229,6 +235,7 @@ if [ "$config_custom_keyboard_layout" = true ]; then
 	set_custom_keyboard_layout
 fi
 
+configure_groups
 disable_pc_speaker
 update_dotfiles
 #download_nvim_spell_files
