@@ -26,6 +26,9 @@ return {
           enable = true,
         },
       },
+      diagnostics = {
+        disabled = { "inactive-code" },
+      },
     },
   },
 

@@ -1,9 +1,12 @@
 vim.lsp.enable {
+  "blueprint",
   "clangd",
   "elm",
+  "go",
   "lua",
   "rust",
   "typst",
+  "zig",
 }
 
 -- lsp: references in location list

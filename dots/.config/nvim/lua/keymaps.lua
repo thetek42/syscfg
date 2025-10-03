@@ -13,6 +13,10 @@ vim.keymap.set ("n", "<S-h>", "<CMD>bprevious<CR>", opts)
 vim.keymap.set ("n", "<S-l>", "<CMD>bnext<CR>", opts)
 vim.keymap.set ("n", "<M-h>", "<CMD>bfirst<CR>", opts)
 vim.keymap.set ("n", "<M-l>", "<CMD>blast<CR>", opts)
+vim.keymap.set ("n", "<leader>bb", "<CMD>Pick buffers<CR>", opts)
+
+-- files
+vim.keymap.set ("n", "<leader><leader>", "<CMD>Pick files<CR>", opts)
 
 -- windows
 vim.keymap.set ("n", "<C-h>", "<C-w>h", opts)

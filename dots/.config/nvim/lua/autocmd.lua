@@ -6,11 +6,11 @@ vim.api.nvim_create_autocmd ("TextYankPost", {
 })
 
 -- disable comment continuation
-vim.api.nvim_create_autocmd ("BufEnter", {
-  callback = function ()
-    vim.opt.formatoptions:remove { "o", "r" }
-  end,
-})
+--vim.api.nvim_create_autocmd ("BufEnter", {
+--  callback = function ()
+--    vim.opt.formatoptions:remove { "o", "r" }
+--  end,
+--})
 
 -- disable undofile on temporary files
 vim.api.nvim_create_autocmd ("BufWritePre", {
