@@ -35,10 +35,10 @@ uninstall:
 .PHONY: all clean install uninstall
 
 
-build/wlock: $(OBJ_FILES)
+build/wlock: builddir $(OBJ_FILES)
 	$(CC) $(CFLAGS) $(OBJ_FILES) -o $@ $(CLIBS)
 
-build/wlock.o: wlock.c builddir
+build/wlock.o: wlock.c
 	$(CC) $(CFLAGS) -c $< -o $@
 build/%-protocol.o: build/-protocol.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -50,15 +50,15 @@ builddir:
 	@mkdir -p build/
 
 
-build/single-pixel-buffer-v1-protocol.c: builddir
+build/single-pixel-buffer-v1-protocol.c:
 	$(WLSCAN) private-code $(WLPROTO)/staging/single-pixel-buffer/single-pixel-buffer-v1.xml $@
-build/single-pixel-buffer-v1-protocol.h: builddir
+build/single-pixel-buffer-v1-protocol.h:
 	$(WLSCAN) client-header $(WLPROTO)/staging/single-pixel-buffer/single-pixel-buffer-v1.xml $@
-build/ext-session-lock-v1-protocol.c: builddir
+build/ext-session-lock-v1-protocol.c:
 	$(WLSCAN) private-code $(WLPROTO)/staging/ext-session-lock/ext-session-lock-v1.xml $@
-build/ext-session-lock-v1-protocol.h: builddir
+build/ext-session-lock-v1-protocol.h:
 	$(WLSCAN) client-header $(WLPROTO)/staging/ext-session-lock/ext-session-lock-v1.xml $@
-build/viewporter-protocol.c: builddir
+build/viewporter-protocol.c:
 	$(WLSCAN) private-code $(WLPROTO)/stable/viewporter/viewporter.xml $@
-build/viewporter-protocol.h: builddir
+build/viewporter-protocol.h:
 	$(WLSCAN) client-header $(WLPROTO)/stable/viewporter/viewporter.xml $@

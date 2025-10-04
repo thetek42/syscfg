@@ -62,9 +62,9 @@ enum input_state { INIT, FAILED, INPUT, INPUT_ALT } input_state = INIT;
 
 static Clr colorname[4] = {
 	[INIT]      = { 0x00000000, 0x00000000, 0x00000000 }, /* after initialization */
-	[INPUT]     = { 0x00000000, 0x55555555, 0x77777777 }, /* during input */
-	[INPUT_ALT] = { 0x00000000, 0x50505050, 0x70707070 }, /* during input, second color */
-	[FAILED]    = { 0xcccccccc, 0x33333333, 0x33333333 }, /* wrong password */
+	[INPUT]     = { 0x30303030, 0x4f4f4f4f, 0x50505050 }, /* during input */
+	[INPUT_ALT] = { 0x33333333, 0x54545454, 0x55555555 }, /* during input, second color */
+	[FAILED]    = { 0xacacacac, 0x41414141, 0x42424242 }, /* wrong password */
 };
 
 /* treat a cleared input like a wrong password (color) */
