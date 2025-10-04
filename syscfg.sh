@@ -32,6 +32,7 @@ packages=(
 	mpd
 	mpv
 	neovim
+	noto-fonts-cjk
 	noto-fonts-emoji
 	pacman-contrib
 	pavucontrol
