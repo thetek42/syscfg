@@ -199,13 +199,6 @@ setup_cups () {
 	sudo systemctl start cups.service
 }
 
-configure_git () {
-	message "configuring git"
-	git config --global user.name thetek
-	git config --global user.email "git@thetek.de"
-	git config --global credential.helper store
-}
-
 # === MAIN =====================================================================
 
 # ensure that we print an error message when a command fails
@@ -234,7 +227,6 @@ install_zsh_plugins
 setup_plocate_database
 setup_cups
 change_shell_to_zsh
-configure_git
 
 install_packages ${config_extra_packages[@]}
 
