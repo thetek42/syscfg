@@ -9,62 +9,46 @@ config_extra_packages=()
 
 # === PACKAGES =================================================================
 
-pkglist_essentials=(
-	cups
-	fuse2
-	inotify-tools
-	pacman-contrib
-	polkit
-	stow
-	system-config-printer
-	usbutils
-	xdg-user-dirs
-)
-
-pkglist_graphical=(
-	feh
-	mpv
-	pavucontrol
-	zathura
-	zathura-pdf-mupdf
-)
-
-pkglist_internet=(
-	firefox
-	pdfjs
-	yt-dlp
-)
-
-pkglist_fonts=(
-	inter-font
-	noto-fonts-emoji
-	ttf-roboto
-	ttf-roboto-mono
-)
-
-pkglist_programming=(
+packages=(
 	bear
 	clang
 	cloc
-	gdb
-	linux-headers
-	python
-	rustup
-	zig
-)
-
-pkglist_terminal=(
+	cups
 	fd
+	feh
+	firefox
+	fuse2
+	gdb
 	htop
+	inotify-tools
+	inter-font
+	linux-headers
 	man-db
 	man-pages
+	mpv
 	neovim
+	noto-fonts-emoji
+	pacman-contrib
+	pavucontrol
 	plocate
+	polkit
+	python
 	ripgrep
+	rustup
+	stow
+	system-config-printer
 	tree
 	tree-sitter-cli
+	ttf-roboto
+	ttf-roboto-mono
 	unzip
+	usbutils
 	wget
+	xdg-user-dirs
+	yt-dlp
+	zathura
+	zathura-pdf-mupdf
+	zig
 	zsh
 )
 
@@ -221,12 +205,7 @@ trap trap_err ERR
 update_packages
 configure_mirrors
 
-install_packages ${pkglist_essentials[@]}
-install_packages ${pkglist_graphical[@]}
-install_packages ${pkglist_internet[@]}
-install_packages ${pkglist_fonts[@]}
-install_packages ${pkglist_programming[@]}
-install_packages ${pkglist_terminal[@]}
+install_packages ${packages[@]}
 
 case "$config_desktop" in
 	"dwl") install_dwl ;;
