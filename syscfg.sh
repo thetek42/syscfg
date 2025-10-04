@@ -19,10 +19,13 @@ packages=(
 	firefox
 	fuse2
 	gdb
+	go
+	gopls
 	htop
 	inotify-tools
 	inter-font
 	linux-headers
+	lua-language-server
 	man-db
 	man-pages
 	mpv
