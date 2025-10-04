@@ -1,5 +1,7 @@
 local skeleton_dir = vim.fn.stdpath ("config") .. "/skeletons"
 
+-- TODO: figure out how to deal with conflicts (e.g. main.c vs _.c)
+
 local code_skeletons = io.popen ("ls -1 " .. skeleton_dir .. "/code")
 if code_skeletons ~= nil then
   for filename in code_skeletons:lines () do
