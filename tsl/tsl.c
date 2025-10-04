@@ -2,6 +2,7 @@
 #include <signal.h>
 #include <stdarg.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdnoreturn.h>
@@ -13,7 +14,11 @@
 
 static void print_contents (void);
 static void print_battery (void);
+static void print_cpu (void);
+static void print_mem (void);
 static void print_time (void);
+static int scanf_file (const char *filename, const char *fmt, ...);
+static int find_and_scanf (FILE *fp, const char *key, const char *fmt, void *res);
 static void terminate (int signo);
 static noreturn void die (const char *fmt, ...);
 
@@ -62,6 +67,10 @@ static void
 print_contents (void)
 {
 	printf (" ");
+	print_cpu ();
+	printf (" | ");
+	print_mem ();
+	printf (" | ");
 	print_battery ();
 	printf (" | ");
 	print_time ();
@@ -72,28 +81,105 @@ print_contents (void)
 static void
 print_battery (void)
 {
-	FILE *file;
+	const char *filename;
 	int perc;
-	
-	file = fopen ("/sys/class/power_supply/" BATTERY "/capacity", "r");
+
+	filename = "/sys/class/power_supply/" BATTERY "/capacity";
+	if (scanf_file (filename, "%d", &perc) != 1) goto err;
+	printf ("bat %02d", perc);
+	return;
+
+err:	printf ("bat N/A");
+}
+
+static void
+print_cpu (void)
+{
+	static uintmax_t a[7] = {0};
+	uintmax_t b[7], perc, sum;
+
+	memcpy (b, a, sizeof b);
+	if (scanf_file ("/proc/stat", "%*s %ju %ju %ju %ju %ju %ju %ju",
+	                 &a[0], &a[1], &a[2], &a[3], &a[4], &a[5], &a[6]) != 7)
+		goto err;
+	if (b[0] == 0) goto err;
+	sum = (a[0] + a[1] + a[2] + a[3] + a[4] + a[5] + a[6]) -
+	      (b[0] + b[1] + b[2] + b[3] + b[4] + b[5] + b[6]);
+	if (sum == 0) goto err;
+	perc = (a[0] + a[1] + a[2] + a[5] + a[6]) - (b[0] + b[1] + b[2] + b[5] + b[6]);
+	perc = (100 * perc) / sum;
+	printf ("cpu %02ju", perc);
+	return;
+
+err:	printf ("cpu N/A");
+}
+
+static void
+print_mem (void)
+{
+	uintmax_t total, free, buffers, cached, shmem, sreclaim, perc;
+	FILE *file;
+
+	file = fopen ("/proc/meminfo", "r");
 	if (!file) goto err;
-	if (fscanf (file, "%d", &perc) != 1) goto err;
+	if (find_and_scanf (file, "MemTotal:", "%ju kB", &total) != 1 ||
+	    find_and_scanf (file, "MemFree:", "%ju kB", &free) != 1 ||
+	    find_and_scanf (file, "Buffers:", "%ju kB", &buffers) != 1 ||
+	    find_and_scanf (file, "Cached:", "%ju kB", &cached) != 1 ||
+	    find_and_scanf (file, "Shmem:", "%ju kB", &shmem) != 1 ||
+	    find_and_scanf (file, "SReclaimable:", "%ju kB", &sreclaim) != 1)
+		goto err;
 	fclose (file);
-	printf ("BAT: %02d%%", perc);
+	if (total == 0) goto err;
+	perc = total + shmem - free - buffers - cached - sreclaim;
+	perc = (100 * perc) / total;
+	printf ("mem %02ju", perc);
 	return;
 
 err:	if (file) fclose (file);
-	printf ("BAT: n/a");
+	printf ("mem N/A");
 }
 
 static void
 print_time (void)
 {
-	char buf[21];
+	char buf[18];
 	time_t t;
 	t = time (NULL);
-	strftime (buf, sizeof buf, "%F %T", localtime (&t));
+	strftime (buf, sizeof buf, "%F %H:%M", localtime (&t));
 	printf ("%s", buf);
+}
+
+static int
+scanf_file (const char *filename, const char *fmt, ...)
+{
+	FILE *file;
+	va_list ap;
+	int ret;
+
+	file = fopen (filename, "r");
+	if (!file) return -1;
+	va_start (ap, fmt);
+	ret = vfscanf (file, fmt, ap);
+	va_end (ap);
+	fclose (file);
+	return ret;
+}
+
+static int
+find_and_scanf (FILE *fp, const char *key, const char *fmt, void *res)
+{
+	char line[256];
+	int n = -1;
+
+	rewind(fp);
+	while (fgets(line, sizeof(line), fp)) {
+		if (strncmp(line, key, strlen(key)) == 0) {
+			n = sscanf(line + strlen(key), fmt, res);
+			break;
+		}
+	}
+	return (n == 1) ? 1 : -1;
 }
 
 static void
