@@ -28,6 +28,8 @@ packages=(
 	lua-language-server
 	man-db
 	man-pages
+	mpc
+	mpd
 	mpv
 	neovim
 	noto-fonts-emoji
@@ -145,6 +147,7 @@ configure_xdg_user_dirs () {
 	mkdir -p "$HOME/docs"
 	mkdir -p "$HOME/img"
 	mkdir -p "$HOME/music"
+	mkdir -p "$HOME/playlists"
 	mkdir -p "$HOME/probe"
 	mkdir -p "$HOME/vids"
 	mkdir -p "$HOME/tmp"
@@ -193,10 +196,10 @@ setup_plocate_database () {
 	sudo updatedb
 }
 
-setup_cups () {
-	message "setting up cups"
-	sudo systemctl enable cups.service
-	sudo systemctl start cups.service
+setup_services () {
+	message "setting up services"
+	sudo systemctl --now enable cups.service
+	systemctl --user --now enable mpd.service
 }
 
 # === MAIN =====================================================================
@@ -225,7 +228,7 @@ update_dotfiles
 configure_xdg_user_dirs
 install_zsh_plugins
 setup_plocate_database
-setup_cups
+setup_services
 change_shell_to_zsh
 
 install_packages ${config_extra_packages[@]}
