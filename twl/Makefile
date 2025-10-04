@@ -1,11 +1,10 @@
 VERSION = 0.1
 
 CC     := gcc
-CFLAGS := -std=c11 -Isrc -Ibuild
-CFLAGS += -Wall -Wextra -Wpedantic -Wfloat-conversion -Wdeclaration-after-statement \
-	  -Wno-unused-parameter -Wshadow -Wunused-macros -Werror=strict-prototypes \
-	  -Werror=implicit -Werror=return-type -Werror=incompatible-pointer-types
-CFLAGS += -ggdb3
+CFLAGS := -std=c11 -Isrc -Ibuild -ggdb3
+CFLAGS += -Wall -Wextra -Wpedantic -Wfloat-conversion -Wdeclaration-after-statement
+CFLAGS += -Wno-unused-parameter -Wshadow -Wunused-macros -Werror=strict-prototypes
+CFLAGS += -Werror=implicit -Werror=return-type -Werror=incompatible-pointer-types
 CFLAGS += -DWLR_USE_UNSTABLE -DXWAYLAND -D_POSIX_C_SOURCE=200809L -DVERSION=\"$(VERSION)\"
 
 LIBS   := wlroots-0.19 wayland-server libinput pixman-1 fcft xkbcommon xcb xcb-icccm
@@ -14,10 +13,11 @@ CLIBS  := $(shell pkg-config --libs $(LIBS)) -lm
 
 WLSCAN  := $(shell pkg-config --variable=wayland_scanner wayland-scanner)
 WLPROTO := $(shell pkg-config --variable=pkgdatadir wayland-protocols)
-PROTOS  := build/cursor-shape-v1-protocol.h \
-	   build/pointer-constraints-unstable-v1-protocol.h \
-	   build/xdg-shell-protocol.h build/wlr-layer-shell-unstable-v1-protocol.h \
-	   build/wlr-output-power-management-unstable-v1-protocol.h
+PROTOS  := build/cursor-shape-v1-protocol.h
+PROTOS  += build/pointer-constraints-unstable-v1-protocol.h
+PROTOS  += build/xdg-shell-protocol.h
+PROTOS  += build/wlr-layer-shell-unstable-v1-protocol.h
+PROTOS  += build/wlr-output-power-management-unstable-v1-protocol.h
 
 SRC_FILES := $(shell find src/ -type f -name "*.c")
 OBJ_FILES := $(SRC_FILES:src/%.c=build/%.o)
