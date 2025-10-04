@@ -717,18 +717,19 @@ buttonpress(struct wl_listener *listener, void *data)
 			(node = wlr_scene_node_at(&layers[LyrBottom]->node, cursor->x, cursor->y, NULL, NULL)) &&
 			(buffer = wlr_scene_buffer_from_node(node)) && buffer == selmon->scene_buffer) {
 			cx = (cursor->x - selmon->m.x) * selmon->wlr_output->scale;
-			do
+			do {
 				x += TEXTW(selmon, tags[i]);
-			while (cx >= x && ++i < LENGTH(tags));
+			} while (cx >= x && ++i < LENGTH(tags));
 			if (i < LENGTH(tags)) {
 				click = ClkTagBar;
 				arg.ui = 1 << i;
-			} else if (cx < x + TEXTW(selmon, selmon->ltsymbol))
+			} else if (cx < x + TEXTW(selmon, selmon->ltsymbol)) {
 				click = ClkLtSymbol;
-			else if (cx > selmon->b.width - (TEXTW(selmon, stext) - selmon->lrpad + 2)) {
+			} else if (cx > selmon->b.width - (TEXTW(selmon, stext) - selmon->lrpad + 2)) {
 				click = ClkStatus;
-			} else
+			} else {
 				click = ClkTitle;
+			}
 		}
 
 		/* Change focus if the button was _pressed_ over a client */
@@ -1542,7 +1543,7 @@ drawbar(Monitor *m)
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		drwl_setscheme(m->drw, colors[SchemeNorm]);
-		tw = TEXTW(m, stext) - m->lrpad + 2; /* 2px right padding */
+		tw = TEXTW(m, stext) - m->lrpad;
 		drwl_text(m->drw, m->b.width - tw, 0, tw, m->b.height, 0, stext, 0);
 	}
 
