@@ -123,6 +123,7 @@ install_twl () {
 	make -C tsl
 	rm -f "$HOME/bin/tsl"
 	cp tsl/tsl "$HOME/bin/tsl"
+	sudo make -C wlock install
 }
 
 configure_mirrors () {

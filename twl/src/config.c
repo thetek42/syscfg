@@ -82,6 +82,7 @@ static const char *vol_down[]        = { "pactl", "set-sink-volume", "@DEFAULT_S
 static const char *vol_mute[]        = { "pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
 static const char *screenshot_area[] = { "screenshot-area.sh", NULL };
 static const char *screenshot_full[] = { "screenshot-full.sh", NULL };
+static const char *wlockcmd[]        = { "wlock", NULL };
 
 const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
@@ -122,6 +123,7 @@ const Key keys[] = {
 	TAGKEYS(          XKB_KEY_7, XKB_KEY_slash,                      6),
 	TAGKEYS(          XKB_KEY_8, XKB_KEY_parenleft,                  7),
 	TAGKEYS(          XKB_KEY_9, XKB_KEY_parenright,                 8),
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_X,          spawn,          {.v = wlockcmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          quit,           {0} },
 
 	{ 0,                      XKB_KEY_XF86AudioMute, spawn,          {.v = vol_mute} },
