@@ -1,7 +1,8 @@
 vim.pack.add {
   "https://github.com/aktersnurra/no-clown-fiesta.nvim",
   "https://github.com/chomosuke/typst-preview.nvim",
-  "https://github.com/echasnovski/mini.pick",
+  "https://github.com/nvim-mini/mini.pick", -- TODO: replace with custom picker
+  "https://github.com/nvim-mini/mini.bufremove",
   "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/stevearc/oil.nvim",
 }
@@ -53,6 +54,8 @@ require "mini.pick".setup {
     },
   },
 }
+
+require "mini.bufremove".setup {}
 
 vim.cmd.packadd "cfilter"
 
