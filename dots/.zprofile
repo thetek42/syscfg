@@ -1,3 +1,3 @@
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-	/home/tk/code/slstatus/slstatus -s | /home/tk/bin/twl
+	"$HOME/bin/tsl" | "$HOME/bin/twl"
 fi

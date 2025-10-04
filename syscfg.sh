@@ -120,6 +120,9 @@ install_twl () {
 	make -C twl
 	rm -f "$HOME/bin/twl"
 	cp twl/build/twl "$HOME/bin/twl"
+	make -C tsl
+	rm -f "$HOME/bin/tsl"
+	cp tsl/tsl "$HOME/bin/tsl"
 }
 
 configure_mirrors () {
