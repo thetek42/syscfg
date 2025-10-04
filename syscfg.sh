@@ -38,6 +38,8 @@ packages=(
 	plocate
 	polkit
 	python
+	python-pip
+	python-pipx
 	ripgrep
 	rustup
 	stow
