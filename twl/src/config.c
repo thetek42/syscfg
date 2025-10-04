@@ -74,6 +74,7 @@ const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TAP_MAP_L
 
 /* commands */
 static const char *termcmd[]         = { "foot", NULL };
+static const char *pdfcmd[]          = { "zathura", NULL };
 static const char *browsercmd[]      = { "firefox", "--no-remote", "--profile", ".mozilla/firefox/myprofile", NULL };
 static const char *menucmd[]         = { "wmenu-run", "-f", "Roboto Mono 10", "-N", "151515", "-n", "bbbbbb", "-S", "304f50", "-s", "e1e1e1", NULL };
 static const char *vol_up[]          = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%",    NULL };
@@ -88,6 +89,8 @@ const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_space,      spawn,          {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_w,          spawn,          {.v = browsercmd} },
+	{ MODKEY,                    XKB_KEY_z,          spawn,          {.v = pdfcmd} },
+
 	{ MODKEY,                    XKB_KEY_b,          togglebar,      {0} },
 	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_k,          focusstack,     {.i = -1} },

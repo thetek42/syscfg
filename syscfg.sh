@@ -118,6 +118,7 @@ install_twl () {
 	)
 	install_packages ${pkglist[@]}
 	make -C twl
+	rm -f "$HOME/bin/twl"
 	cp twl/build/twl "$HOME/bin/twl"
 }
 

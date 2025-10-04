@@ -1,13 +1,33 @@
-set recolor true
-set recolor-keephue true
-set recolor-darkcolor "#d3c6aa"
-set recolor-lightcolor "#22272b"
-
-set font "DM Mono 10"
-
-set default-bg "#22272b"
-set default-fg "#d3c6aa"
-set statusbar-bg "#22272b"
-set statusbar-fg "#d3c6aa"
-
 set database sqlite
+
+set recolor-lightcolor          "#151515" # bg
+set recolor-darkcolor           "#E1E1E1" # fg
+set recolor                     "true"
+
+set notification-error-bg       "#151515" # bg
+set notification-error-fg       "#b46958" # bright:red
+set notification-warning-bg     "#151515" # bg
+set notification-warning-fg     "#F4BF75" # bright:yellow
+set notification-bg             "#151515" # bg
+set notification-fg             "#90A959" # bright:green
+set completion-bg               "#202020" # bg2
+set completion-fg               "#E1E1E1" # fg
+set completion-group-bg         "#171717" # bg1
+set completion-group-fg         "#373737" # gray
+set completion-highlight-bg     "#A2B5C1" # bright:blue
+set completion-highlight-fg     "#202020" # bg2
+set index-bg                    "#202020" # bg2
+set index-fg                    "#E1E1E1" # fg
+set index-active-bg             "#A2B5C1" # bright:blue
+set index-active-fg             "#202020" # bg2
+set inputbar-bg                 "#151515" # bg
+set inputbar-fg                 "#E1E1E1" # fg
+set statusbar-bg                "#202020" # bg2
+set statusbar-fg                "#E1E1E1" # fg
+set highlight-color             "#F4BF75" # bright:yellow
+set highlight-active-color      "#FFA557" # bright:orange
+set default-bg                  "#151515" # bg
+set default-fg                  "#E1E1E1" # fg
+set render-loading              "true"
+set render-loading-bg           "#151515" # bg
+set render-loading-fg           "#E1E1E1" # fg
