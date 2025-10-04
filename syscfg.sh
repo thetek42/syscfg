@@ -3,7 +3,7 @@ set -e
 
 # === CONFIGURATION ============================================================
 
-config_desktop=dwl
+config_desktop=twl
 config_custom_keyboard_layout=true
 config_extra_packages=()
 
@@ -98,7 +98,7 @@ disable_pc_speaker () {
 	echo "blacklist snd_pcsp" | sudo tee /etc/modprobe.d/nobeep.conf -a
 }
 
-install_dwl () {
+install_twl () {
 	local pkglist=(
 		fcft
 		foot
@@ -117,7 +117,8 @@ install_dwl () {
 		xorg-xwayland
 	)
 	install_packages ${pkglist[@]}
-	# TODO: actually install dwl by cloning source and compiling it
+	make -C twl
+	cp twl/build/twl "$HOME/bin/twl"
 }
 
 configure_mirrors () {
@@ -211,7 +212,7 @@ configure_mirrors
 install_packages ${packages[@]}
 
 case "$config_desktop" in
-	"dwl") install_dwl ;;
+	"twl") install_twl ;;
 	*)     die "unsupported desktop setting '$config_desktop'" ;;
 esac
 
