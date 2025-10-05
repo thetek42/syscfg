@@ -224,6 +224,16 @@ drwl_text(Drwl *drwl,
 		eg = fcft_rasterize_char_utf32(drwl->font, 0x2026 /* … */, fcft_subpixel_mode);
 
 	for (const char *p = text, *pp; pp = p, *p; p++) {
+		/* skip emojis because they crash the window manager lmao */
+		if ((*p & 0xf8) == 0xf0) {
+			p++;
+			for (size_t i = 0; i < 3; i++) {
+				if (!*p) break;
+				p++;
+			}
+			continue;
+		}
+
 		for (state = UTF8_ACCEPT; *p &&
 		     utf8decode(&state, &cp, *p) > UTF8_REJECT; p++)
 			;

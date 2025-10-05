@@ -20,3 +20,4 @@ The licenses can be found in the "licenses" directory.
 - integrate tsl by replacing stdin with timer
 - display volume in tsl
 - get xf86 stuff working (for brightness and screenshot)
+- proper fix for emoji in statusbar causing crash issue
