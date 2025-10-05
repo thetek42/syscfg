@@ -10,6 +10,7 @@
 #include <stdnoreturn.h>
 #include <string.h>
 #include <time.h>
+#include <unistd.h>
 
 #define INTERVAL_SECS 5
 #define BATTERY "BAT0"
@@ -47,6 +48,7 @@ main (void)
 	sigaction (SIGUSR1, &sig_action, NULL);
 
 	/* try to connect to mpd */
+	sleep (1);
 	mpd = mpd_connection_new (NULL, 0, 1000);
 	if (mpd_connection_get_error (mpd) != MPD_ERROR_SUCCESS)
 		handle_mpd_error ();
