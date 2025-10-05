@@ -10,6 +10,7 @@
 #include <wlr/types/wlr_output_layout.h>
 #include <wlr/util/log.h>
 #include <xkbcommon/xkbcommon.h>
+#include <X11/XF86keysym.h>
 
 /******************************************************************************/
 

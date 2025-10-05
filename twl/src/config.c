@@ -80,9 +80,16 @@ static const char *menucmd[]         = { "wmenu-run", "-f", "Roboto Mono 10", "-
 static const char *vol_up[]          = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%",    NULL };
 static const char *vol_down[]        = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%",    NULL };
 static const char *vol_mute[]        = { "pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
-static const char *screenshot_area[] = { "screenshot-area.sh", NULL };
-static const char *screenshot_full[] = { "screenshot-full.sh", NULL };
+static const char *screenshot_area[] = { "sh", "-c", "bin/screenshot-area.sh", NULL };
+static const char *screenshot_full[] = { "sh", "-c", "bin/screenshot-full.sh", NULL };
+static const char *backlight_up[]    = { "python3", "bin/backlight.py", "inc", NULL };
+static const char *backlight_down[]  = { "python3", "bin/backlight.py", "dec", NULL };
 static const char *wlockcmd[]        = { "wlock", NULL };
+static const char *musiccmd[]        = { "sh", "-c", "bin/select-playlist.sh", NULL };
+static const char *musicplaypause[]  = { "mpc", "toggle", NULL };
+static const char *musicnext[]       = { "mpc", "next", NULL };
+static const char *musicprev[]       = { "mpc", "prev", NULL };
+static const char *musicstop[]       = { "mpc", "clear", NULL };
 
 const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
@@ -91,6 +98,7 @@ const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_w,          spawn,          {.v = browsercmd} },
 	{ MODKEY,                    XKB_KEY_z,          spawn,          {.v = pdfcmd} },
+	{ MODKEY,                    XKB_KEY_o,          spawn,          {.v = musiccmd} },
 
 	{ MODKEY,                    XKB_KEY_b,          togglebar,      {0} },
 	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
@@ -126,9 +134,16 @@ const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_X,          spawn,          {.v = wlockcmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          quit,           {0} },
 
-	{ 0,                      XKB_KEY_XF86AudioMute, spawn,          {.v = vol_mute} },
-	{ 0,               XKB_KEY_XF86AudioRaiseVolume, spawn,          {.v = vol_up} },
-	{ 0,               XKB_KEY_XF86AudioLowerVolume, spawn,          {.v = vol_down} },
+	{ 0,                           XF86XK_AudioMute, spawn,          {.v = vol_mute} },
+	{ 0,                    XF86XK_AudioRaiseVolume, spawn,          {.v = vol_up} },
+	{ 0,                    XF86XK_AudioLowerVolume, spawn,          {.v = vol_down} },
+	{ 0,                     XF86XK_MonBrightnessUp, spawn,          {.v = backlight_up} },
+	{ 0,                   XF86XK_MonBrightnessDown, spawn,          {.v = backlight_down} },
+	{ 0,                           XF86XK_AudioPlay, spawn,          {.v = musicplaypause} },
+	{ 0,                          XF86XK_AudioPause, spawn,          {.v = musicplaypause} },
+	{ 0,                           XF86XK_AudioNext, spawn,          {.v = musicnext} },
+	{ 0,                           XF86XK_AudioPrev, spawn,          {.v = musicprev} },
+	{ 0,                           XF86XK_AudioStop, spawn,          {.v = musicstop} },
 	{ 0,                              XKB_KEY_Print, spawn,          {.v = screenshot_area} },
 	{ WLR_MODIFIER_SHIFT,             XKB_KEY_Print, spawn,          {.v = screenshot_full} },
 
