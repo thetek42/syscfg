@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 set -e
 
-# query available playlists from mpd
-playlists="$(mpc lsplaylists)"
+# query available playlists from mpd and sort them
+playlists="$(mpc lsplaylists | sort)"
 # ask user for a playlist using wmenu
 playlist="$(echo "$playlists" | wmenu -i -f "Roboto Mono 10" -N 151515 -n bbbbbb -S 304f50 -s e1e1e1)"
 
