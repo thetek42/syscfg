@@ -22,6 +22,9 @@ static void print_mpd (void);
 static void print_time (void);
 static int scanf_file (const char *filename, const char *fmt, ...);
 static int find_and_scanf (FILE *fp, const char *key, const char *fmt, void *res);
+static void print_mpd_song_tag (struct mpd_song *song, enum mpd_tag_type tag, size_t max_len);
+static void shorten_utf8 (const char *orig, char *output, size_t max_codepoints);
+static size_t char_len_utf8 (unsigned char c);
 static void handle_mpd_error (void);
 static void terminate (int signo);
 static noreturn void die (const char *fmt, ...);
@@ -153,7 +156,6 @@ static void
 print_mpd (void)
 {
 	struct mpd_song *song;
-	const char *value;
 
 	if (!mpd) return;
 
@@ -167,19 +169,9 @@ print_mpd (void)
 
 	if ((song = mpd_recv_song (mpd))) {
 		printf ("♫ ");
-		if ((value = mpd_song_get_tag (song, MPD_TAG_ARTIST, 0))) {
-			printf ("%.15s", value);
-			if (strlen (value) > 15) printf ("…");
-		} else {
-			printf ("n/a");
-		}
+		print_mpd_song_tag (song, MPD_TAG_ARTIST, 20);
 		printf (" - ");
-		if ((value = mpd_song_get_tag (song, MPD_TAG_TITLE, 0))) {
-			printf ("%.31s", value);
-			if (strlen (value) > 31) printf ("…");
-		} else {
-			printf ("n/a");
-		}
+		print_mpd_song_tag (song, MPD_TAG_TITLE, 30);
 		printf (" | ");
 		mpd_song_free (song);
 	}
@@ -230,6 +222,54 @@ find_and_scanf (FILE *fp, const char *key, const char *fmt, void *res)
 		}
 	}
 	return (n == 1) ? 1 : -1;
+}
+
+/* max_len cannot exceed 30 */
+static void
+print_mpd_song_tag (struct mpd_song *song, enum mpd_tag_type tag, size_t max_len)
+{
+	char shortened[128];
+	const char *value;
+
+	if ((value = mpd_song_get_tag (song, tag, 0))) {
+		shorten_utf8 (value, shortened, max_len);
+		printf ("%s", shortened);
+	} else {
+		printf ("n/a");
+	}
+}
+
+/* to be safe, output should have max_codepoints * 4 + 5 bytes */
+static void
+shorten_utf8 (const char *orig, char *output, size_t max_codepoints)
+{
+	size_t len, i, cp, char_len;
+	const char *dots = "…";
+
+	len = strlen (orig);
+	for (i = 0, cp = 0; i < len && cp < max_codepoints; ) {
+		char_len = char_len_utf8 ((unsigned char) orig[i]);
+		if (char_len == 0 || i + char_len > len) break;
+		memcpy (&output[i], &orig[i], char_len);
+		i += char_len;
+		cp += 1;
+	}
+	if (cp == max_codepoints && i < len) {
+		len = strlen (dots);
+		memcpy (&output[i], dots, len);
+		i += len;
+	}
+	output[i] = 0;
+}
+
+static size_t
+char_len_utf8 (unsigned char c)
+{
+	if (c < 0x80) return 1;
+	else if ((c & 0xe0) == 0xc0) return 2;
+	else if ((c & 0xf0) == 0xe0) return 3;
+	else if ((c & 0xf8) == 0xf0) return 4;
+	return 0;
 }
 
 static void
