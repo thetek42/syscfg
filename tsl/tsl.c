@@ -1,4 +1,6 @@
+#include <assert.h>
 #include <errno.h>
+#include <mpd/client.h>
 #include <signal.h>
 #include <stdarg.h>
 #include <stdbool.h>
@@ -9,20 +11,23 @@
 #include <string.h>
 #include <time.h>
 
-#define INTERVAL_SECS 10
+#define INTERVAL_SECS 5
 #define BATTERY "BAT0"
 
 static void print_contents (void);
 static void print_battery (void);
 static void print_cpu (void);
 static void print_mem (void);
+static void print_mpd (void);
 static void print_time (void);
 static int scanf_file (const char *filename, const char *fmt, ...);
 static int find_and_scanf (FILE *fp, const char *key, const char *fmt, void *res);
+static void handle_mpd_error (void);
 static void terminate (int signo);
 static noreturn void die (const char *fmt, ...);
 
 static volatile sig_atomic_t should_exit = 0;
+static struct mpd_connection *mpd = NULL;
 
 int
 main (void)
@@ -38,35 +43,39 @@ main (void)
 	sig_action.sa_flags |= SA_RESTART;
 	sigaction (SIGUSR1, &sig_action, NULL);
 
+	/* try to connect to mpd */
+	mpd = mpd_connection_new (NULL, 0, 1000);
+	if (mpd_connection_get_error (mpd) != MPD_ERROR_SUCCESS)
+		handle_mpd_error ();
+
 	/* main loop */
 	while (!should_exit) {
-		if (clock_gettime (CLOCK_MONOTONIC, &start) < 0) {
+		if (clock_gettime (CLOCK_MONOTONIC, &start) < 0)
 			die ("clock_gettime");
-		}
 
 		print_contents ();
-		if (ferror (stdout)) {
-			die ("print stdout");
-		}
+
+		if (ferror (stdout)) die ("print stdout");
 		if (should_exit) break;
 
 		/* calculate remaining time to match interval (kind of) */
-		if (clock_gettime (CLOCK_MONOTONIC, &current) < 0) {
+		if (clock_gettime (CLOCK_MONOTONIC, &current) < 0)
 			die ("clock_gettime");
-		}
 		diff.tv_sec = INTERVAL_SECS - (current.tv_sec - start.tv_sec);
 		diff.tv_nsec = 0;
 		if (diff.tv_sec <= 0) continue;
-		if (nanosleep (&diff, NULL) < 0 && errno != EINTR) {
+		if (nanosleep (&diff, NULL) < 0 && errno != EINTR)
 			die ("nanosleep");
-		}
 	}
+
+	if (mpd) mpd_connection_free (mpd);
 }
 
 static void
 print_contents (void)
 {
 	printf (" ");
+	print_mpd ();
 	print_cpu ();
 	printf (" | ");
 	print_mem ();
@@ -141,6 +150,47 @@ err:	if (file) fclose (file);
 }
 
 static void
+print_mpd (void)
+{
+	struct mpd_song *song;
+	const char *value;
+
+	if (!mpd) return;
+
+	mpd_command_list_begin (mpd, true);
+	mpd_send_current_song (mpd);
+	mpd_command_list_end (mpd);
+	if (mpd_connection_get_error (mpd) != MPD_ERROR_SUCCESS) {
+		handle_mpd_error ();
+		return;
+	}
+
+	if ((song = mpd_recv_song (mpd))) {
+		printf ("♫ ");
+		if ((value = mpd_song_get_tag (song, MPD_TAG_ARTIST, 0))) {
+			printf ("%.15s", value);
+			if (strlen (value) > 15) printf ("…");
+		} else {
+			printf ("n/a");
+		}
+		printf (" - ");
+		if ((value = mpd_song_get_tag (song, MPD_TAG_TITLE, 0))) {
+			printf ("%.31s", value);
+			if (strlen (value) > 31) printf ("…");
+		} else {
+			printf ("n/a");
+		}
+		printf (" | ");
+		mpd_song_free (song);
+	}
+
+	if ((mpd_connection_get_error (mpd) != MPD_ERROR_SUCCESS) ||
+	    (!mpd_response_finish (mpd))) {
+		handle_mpd_error ();
+	}
+}
+
+static void
 print_time (void)
 {
 	char buf[18];
@@ -180,6 +230,14 @@ find_and_scanf (FILE *fp, const char *key, const char *fmt, void *res)
 		}
 	}
 	return (n == 1) ? 1 : -1;
+}
+
+static void
+handle_mpd_error (void)
+{
+	fprintf (stderr, "%s\n", mpd_connection_get_error_message (mpd));
+	mpd_connection_free (mpd);
+	mpd = NULL;
 }
 
 static void

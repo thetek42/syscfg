@@ -19,5 +19,4 @@ The licenses can be found in the "licenses" directory.
 - make twl.c actually maintainable lmao
 - integrate tsl by replacing stdin with timer
 - display volume in tsl
-- mpd status display in bar (replaces half of current window label)
 - get xf86 stuff working (for brightness and screenshot)
