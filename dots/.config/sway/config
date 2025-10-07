@@ -1,0 +1,151 @@
+## font
+font pango:Roboto Mono 10
+
+## borders              border  bg      text  indicator child_border
+client.focused          #304f50 #304f50 #e1e1e1 #304f50 #304f50
+client.focused_inactive #151515 #151515 #bbbbbb #151515 #151515
+client.unfocused        #151515 #151515 #bbbbbb #151515 #151515
+client.urgent           #ac4142 #ac4142 #bbbbbb #ac4142 #ac4142
+default_border pixel 1
+
+## variables
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term foot
+set $browser firefox --no-remote --profile .mozilla/firefox/myprofile
+set $pdfreader zathura
+set $menu wmenu-run -f 'Roboto Mono 10' -N 151515 -n bbbbbb -S 304f50 -s e1e1e1
+
+## displays
+output HDMI-A-1 resolution 1920x1080 position 1920 0
+output eDP-1    resolution 1920x1080 position 0    0
+
+## workspaces
+workspace 1 output HDMI-A-1 DP-3
+workspace 2 output HDMI-A-1 DP-3
+workspace 3 output HDMI-A-1 DP-3
+workspace 4 output DP-3 HDMI-A-1
+workspace 5 output DP-3 HDMI-A-1
+workspace 6 output DP-3 HDMI-A-1
+workspace 7 output eDP-1
+workspace 8 output eDP-1
+workspace 9 output eDP-1
+
+## touchpad configuration -- `swaymsg -t get_inputs`
+input "1267:12734:MSFT0001:00_04F3:31BE_Touchpad" {
+  dwt enabled
+  tap enabled
+  natural_scroll enabled
+  middle_emulation enabled
+  drag_lock disabled
+}
+
+## mouse configuration
+input type:pointer {
+  pointer_accel 1.0
+}
+
+## keyboard layout
+input * {
+  xkb_layout "demod"
+  xkb_options "ctrl:nocaps"
+}
+input type:keyboard xkb_numlock enabled
+
+## key bindings
+floating_modifier $mod normal
+# sway
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec swaymsg exit
+# applications
+bindsym $mod+return exec $term
+bindsym $mod+space exec $menu
+bindsym $mod+w exec $browser
+bindsym $mod+z exec $pdfreader
+# function keys
+bindsym XF86MonBrightnessDown exec .config/sway/backlight.py dec
+bindsym XF86MonBrightnessUp   exec .config/sway/backlight.py inc
+bindsym XF86AudioMute         exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume  exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioMicMute      exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# TODO: bindsym XF86Calculator        exec swaylock -f -c 000000 && systemctl suspend
+# client keys
+bindsym $mod+q kill
+# moving
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# workspaces
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+# layout
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+f fullscreen
+bindsym $mod+n floating toggle
+bindsym $mod+m focus mode_toggle
+bindsym $mod+a focus parent
+# scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+# resizing
+bindsym $mod+r mode "resize"
+mode "resize" {
+  bindsym $left resize shrink width 10px
+  bindsym $down resize grow height 10px
+  bindsym $up resize shrink height 10px
+  bindsym $right resize grow width 10px
+  bindsym $mod+r mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+# screenshots
+bindsym Print mode "screenshot"
+mode "screenshot" {
+  bindsym a exec grimshot copy area, mode "default"
+  bindsym s exec grimshot copy output, mode "default"
+  bindsym w exec grimshot copy window, mode "default"
+  bindsym c exec grimshot copy active, mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym Print mode "default"
+}
+
+## floating window mapping
+#for_window [app_id="..."] floating enable
+
+## status bar
+#bar {
+#  swaybar_command waybar
+#}
+
+## include default config
+include /etc/sway/config.d/*

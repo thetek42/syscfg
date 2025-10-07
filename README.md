@@ -25,6 +25,4 @@ After changes, it is sufficient to run either:
 | dots/.mozilla/ | Custom firefox profile configuration       |
 | dots/bin       | Utility shell scripts                      |
 | misc/          | Miscellaneous stuff (e.g. keyboard layout) |
-| twl/           | Window manager (based on dwl)              |
-| tsl/           | Custom status line for twl                 |
 | wlock/         | Screen locker (wlock with configs)         |

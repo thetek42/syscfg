@@ -3,7 +3,7 @@ set -e
 
 # === CONFIGURATION ============================================================
 
-config_desktop=twl
+config_desktop=sway
 config_custom_keyboard_layout=true
 config_extra_packages=()
 
@@ -103,32 +103,18 @@ disable_pc_speaker () {
 	echo "blacklist snd_pcsp" | sudo tee /etc/modprobe.d/nobeep.conf -a
 }
 
-install_twl () {
+install_sway () {
 	local pkglist=(
 		fcft
-		foot
 		grim
-		libinput
-		libxcb
-		libxkbcommon
-		pixman
 		slurp
-		tllist
-		wayland
-		wayland-protocols
+		sway
+		sway-contrib
 		wl-clipboard
-		wlroots0.19
 		wmenu
 		xorg-xwayland
 	)
 	install_packages ${pkglist[@]}
-	make -C twl
-	rm -f "$HOME/bin/twl"
-	cp twl/build/twl "$HOME/bin/twl"
-	make -C tsl
-	rm -f "$HOME/bin/tsl"
-	cp tsl/tsl "$HOME/bin/tsl"
-	sudo make -C wlock install
 }
 
 configure_mirrors () {
@@ -216,8 +202,8 @@ configure_mirrors
 install_packages ${packages[@]}
 
 case "$config_desktop" in
-	"twl") install_twl ;;
-	*)     die "unsupported desktop setting '$config_desktop'" ;;
+	"sway") install_sway ;;
+	*)      die "unsupported desktop setting '$config_desktop'" ;;
 esac
 
 if [ "$config_custom_keyboard_layout" = true ]; then
