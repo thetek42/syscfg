@@ -48,6 +48,9 @@ input type:pointer {
   pointer_accel 1.0
 }
 
+## hide pointer after inactivity
+seat seat0 hide_cursor 5000
+
 ## keyboard layout
 input * {
   xkb_layout "demod"
