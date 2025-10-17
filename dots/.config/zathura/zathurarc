@@ -1,5 +1,7 @@
 set database sqlite
 
+set font "Roboto Mono 10"
+
 set recolor-lightcolor          "#151515" # bg
 set recolor-darkcolor           "#E1E1E1" # fg
 set recolor                     "true"
