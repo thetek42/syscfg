@@ -1,12 +1,13 @@
 ## font
-font pango:Roboto Mono 10
+font pango:Adwaita Mono 10
 
 ## borders              border  bg      text  indicator child_border
-client.focused          #304f50 #304f50 #e1e1e1 #304f50 #304f50
+client.focused          #4e625c #4e625c #e1e1e1 #4e625c #4e625c
 client.focused_inactive #151515 #151515 #bbbbbb #151515 #151515
 client.unfocused        #151515 #151515 #bbbbbb #151515 #151515
 client.urgent           #ac4142 #ac4142 #bbbbbb #ac4142 #ac4142
 default_border pixel 1
+default_floating_border pixel 1
 
 ## variables
 set $mod Mod4
@@ -146,9 +147,19 @@ mode "screenshot" {
 #for_window [app_id="..."] floating enable
 
 ## status bar
-#bar {
-#  swaybar_command waybar
-#}
+bar {
+    position bottom
+    status_command ~/bin/tsl
+    colors {
+        background #151515
+        statusline #555555
+        focused_workspace #202423 #202423 #88afa2
+        active_workspace #151515 #151515 #555555
+        inactive_workspace #151515 #151515 #555555
+        urgent_workspace #ac4142 #ac4142 #151515
+        binding_mode #252525 #252525 #f4bf75
+    }
+}
 
 ## include default config
 include /etc/sway/config.d/*

@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-# === CONFIGURATION ============================================================
-
-config_desktop=sway
-config_custom_keyboard_layout=true
-config_extra_packages=()
-
 # === PACKAGES =================================================================
 
 packages=(
@@ -117,6 +111,13 @@ install_sway () {
 	install_packages ${pkglist[@]}
 }
 
+compile_custom_programs () {
+	make -C tsl
+	killall tsl || true
+	rm -f "$HOME/bin/tsl"
+	cp tsl/tsl "$HOME/bin"
+}
+
 configure_mirrors () {
 	install_packages reflector
 	message "configuring mirrors"
@@ -200,16 +201,9 @@ update_packages
 configure_mirrors
 
 install_packages ${packages[@]}
-
-case "$config_desktop" in
-	"sway") install_sway ;;
-	*)      die "unsupported desktop setting '$config_desktop'" ;;
-esac
-
-if [ "$config_custom_keyboard_layout" = true ]; then
-	set_custom_keyboard_layout
-fi
-
+install_sway
+compile_custom_programs
+set_custom_keyboard_layout
 configure_groups
 disable_pc_speaker
 update_dotfiles
@@ -219,8 +213,6 @@ install_zsh_plugins
 setup_plocate_database
 setup_services
 change_shell_to_zsh
-
-install_packages ${config_extra_packages[@]}
 
 echo -e "\e[32m>> success!\e[0m"
 
