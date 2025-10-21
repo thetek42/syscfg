@@ -1,6 +1,8 @@
 #include <assert.h>
 #include <errno.h>
+#include <math.h>
 #include <mpd/client.h>
+#include <pulse/pulseaudio.h>
 #include <signal.h>
 #include <stdarg.h>
 #include <stdbool.h>
@@ -21,6 +23,10 @@ static void print_cpu (void);
 static void print_mem (void);
 static void print_mpd (void);
 static void print_time (void);
+static void print_vol (void);
+static void prepare_pulse_data (void);
+static void pulse_context_cb (pa_context *c, void *data);
+static void pulse_sink_info_cb (pa_context *c, const pa_sink_info *i, int eol, void *data);
 static int scanf_file (const char *filename, const char *fmt, ...);
 static int find_and_scanf (FILE *fp, const char *key, const char *fmt, void *res);
 static void print_mpd_song_tag (struct mpd_song *song, enum mpd_tag_type tag, size_t max_len);
@@ -32,6 +38,9 @@ static noreturn void die (const char *fmt, ...);
 
 static volatile sig_atomic_t should_exit = 0;
 static struct mpd_connection *mpd = NULL;
+static bool pulse_is_muted = false;
+static int pulse_volume = -1;
+static bool pulse_ready = false;
 
 int
 main (void)
@@ -81,6 +90,8 @@ print_contents (void)
 {
 	printf (" ");
 	print_mpd ();
+	print_vol ();
+	printf (" | ");
 	print_cpu ();
 	printf (" | ");
 	print_mem ();
@@ -192,6 +203,75 @@ print_time (void)
 	t = time (NULL);
 	strftime (buf, sizeof buf, "%F %H:%M", localtime (&t));
 	printf ("%s", buf);
+}
+
+static void
+print_vol (void)
+{
+	prepare_pulse_data ();
+	if (pulse_is_muted) {
+		printf ("vol muted");
+	} else {
+		printf ("vol %02d", pulse_volume);
+	}
+}
+
+static void
+prepare_pulse_data (void)
+{
+	pa_mainloop *mainloop;
+	pa_mainloop_api *api;
+	pa_context *context;
+
+	pulse_ready = false;
+	pulse_is_muted = false;
+	pulse_volume = -1;
+	mainloop = pa_mainloop_new ();
+	api = pa_mainloop_get_api (mainloop);
+	context = pa_context_new (api, "get_sink_information");
+	pa_context_set_state_callback (context, pulse_context_cb, NULL);
+	pa_context_connect (context, NULL, PA_CONTEXT_NOFLAGS, NULL);
+	while (!pulse_ready) pa_mainloop_iterate (mainloop, 1, NULL);
+	pa_context_disconnect (context);
+	pa_context_unref (context);
+	pa_mainloop_free (mainloop);
+}
+
+static void
+pulse_context_cb (pa_context *c, void *data)
+{
+	(void) data;
+	switch (pa_context_get_state (c)) {
+	case PA_CONTEXT_READY:
+		pa_context_get_sink_info_by_name (c, "@DEFAULT_SINK@", pulse_sink_info_cb, NULL);
+		break;
+	case PA_CONTEXT_FAILED:
+	case PA_CONTEXT_TERMINATED:
+		pulse_ready = true;
+		break;
+	default:
+		break;
+	}
+}
+
+static void
+pulse_sink_info_cb (pa_context *c, const pa_sink_info *i, int eol, void *data)
+{
+	float volume_raw, volume_percent;
+
+	(void) c;
+	(void) data;
+
+	if (eol > 0) {
+		pulse_ready = true;
+		return;
+	}
+
+	volume_raw = (float) pa_cvolume_avg (&(i->volume));
+	volume_percent = (100.0f * volume_raw) / (float) PA_VOLUME_NORM;
+	pulse_volume = (int) roundf (volume_percent);
+	pulse_is_muted = i->mute;
+	pulse_ready = true;
 }
 
 static int
