@@ -88,6 +88,8 @@ bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
+bindsym $mod+Ctrl+$left move workspace to output left
+bindsym $mod+Ctrl+$right move workspace to output right
 # workspaces
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
