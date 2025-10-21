@@ -17,6 +17,13 @@ fi
 # extract file name from song list by stripping the initial album track number
 files="$(echo "$songs" | cut -d ' ' -f 2-)"
 
+# check if there is a queued song. if not, clear the queue to ensure that it
+# isn't re-populated with the previously queued songs
+is_song_queued="$(mpc queued)"
+if [[ -z "$is_song_queued" ]]; then
+	mpc clear
+fi
+
 # iterate through the file names and append every file to the mpd queue
 # (note that the queue is not cleared before so that it is possible to queue
 # multiple playlists)
