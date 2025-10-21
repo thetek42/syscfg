@@ -69,6 +69,7 @@ bindsym $mod+return exec $term
 bindsym $mod+space exec $menu
 bindsym $mod+w exec $browser
 bindsym $mod+z exec $pdfreader
+bindsym $mod+Shift+o exec ~/bin/select-playlist.sh
 # function keys
 bindsym XF86MonBrightnessDown exec .config/sway/backlight.py dec
 bindsym XF86MonBrightnessUp   exec .config/sway/backlight.py inc
@@ -76,6 +77,11 @@ bindsym XF86AudioMute         exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioLowerVolume  exec pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym XF86AudioMicMute      exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioPlay         exec mpc toggle
+bindsym XF86AudioPause        exec mpc toggle
+bindsym XF86AudioNext         exec mpc next
+bindsym XF86AudioPrev         exec mpc prev
+bindsym XF86AudioStop         exec mpc clear
 # TODO: bindsym XF86Calculator        exec swaylock -f -c 000000 && systemctl suspend
 # client keys
 bindsym $mod+q kill
@@ -154,10 +160,10 @@ bar {
     status_command ~/bin/tsl
     colors {
         background #151515
-        statusline #555555
+        statusline #777777
         focused_workspace #202423 #202423 #88afa2
-        active_workspace #151515 #151515 #555555
-        inactive_workspace #151515 #151515 #555555
+        active_workspace #151515 #151515 #777777
+        inactive_workspace #151515 #151515 #777777
         urgent_workspace #ac4142 #ac4142 #151515
         binding_mode #252525 #252525 #f4bf75
     }
