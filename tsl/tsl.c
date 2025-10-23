@@ -182,9 +182,9 @@ print_mpd (void)
 
 	if ((song = mpd_recv_song (mpd))) {
 		printf ("♫ ");
-		print_mpd_song_tag (song, MPD_TAG_ARTIST, 20);
+		print_mpd_song_tag (song, MPD_TAG_ARTIST, 30);
 		printf (" - ");
-		print_mpd_song_tag (song, MPD_TAG_TITLE, 30);
+		print_mpd_song_tag (song, MPD_TAG_TITLE, 40);
 		printf (" | ");
 		mpd_song_free (song);
 	}
@@ -262,12 +262,12 @@ pulse_sink_info_cb (pa_context *c, const pa_sink_info *i, int eol, void *data)
 	(void) c;
 	(void) data;
 
-	if (eol > 0) {
+	if (eol > 0 || !pa_cvolume_valid (&i->volume)) {
 		pulse_ready = true;
 		return;
 	}
 
-	volume_raw = (float) pa_cvolume_avg (&(i->volume));
+	volume_raw = (float) pa_cvolume_avg (&i->volume);
 	volume_percent = (100.0f * volume_raw) / (float) PA_VOLUME_NORM;
 	pulse_volume = (int) roundf (volume_percent);
 	pulse_is_muted = i->mute;
@@ -306,11 +306,11 @@ find_and_scanf (FILE *fp, const char *key, const char *fmt, void *res)
 	return (n == 1) ? 1 : -1;
 }
 
-/* max_len cannot exceed 30 */
+/* max_len cannot exceed 40 */
 static void
 print_mpd_song_tag (struct mpd_song *song, enum mpd_tag_type tag, size_t max_len)
 {
-	char shortened[128];
+	char shortened[168];
 	const char *value;
 
 	if ((value = mpd_song_get_tag (song, tag, 0))) {
