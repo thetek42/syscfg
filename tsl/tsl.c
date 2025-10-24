@@ -262,7 +262,7 @@ pulse_sink_info_cb (pa_context *c, const pa_sink_info *i, int eol, void *data)
 	(void) c;
 	(void) data;
 
-	if (eol > 0 || !pa_cvolume_valid (&i->volume)) {
+	if (eol > 0 || i == NULL) {
 		pulse_ready = true;
 		return;
 	}
