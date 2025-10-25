@@ -4,6 +4,7 @@ vim.lsp.enable {
   "elm",
   "go",
   "lua",
+  "python",
   "rust",
   "typst",
   "zig",
