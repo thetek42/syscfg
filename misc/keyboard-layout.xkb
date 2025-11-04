@@ -5,10 +5,12 @@ xkb_symbols "basic" {
     include "de(basic)"
     name[Group1]="GermanModified";
 
+    key <AE07> {[ 7, numbersign, braceleft, seveneighths ]};
     key <AE12> {[ underscore, grave, dead_acute, dead_cedilla ]};
     key <AD11> {[ backslash, bar, dead_diaeresis, dead_abovering ]};
     key <AC10> {[ braceleft, bracketleft, dead_doubleacute, dead_belowdot ]};
     key <AC11> {[ braceright, bracketright, dead_circumflex, dead_caron ]};
+    key <BKSL> {[ slash, apostrophe, rightsinglequotemark, dead_breve ]};
     key <AB01> {[ y, Y, less, guillemotright ]};
     key <AB02> {[ x, X, greater, guillemotleft ]};
 };
