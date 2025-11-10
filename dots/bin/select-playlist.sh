@@ -28,7 +28,7 @@ fi
 # (note that the queue is not cleared before so that it is possible to queue
 # multiple playlists)
 echo "$files" | while IFS= read -r file; do
-	mpc add "$file"
+	mpc add -- "$file"
 done
 
 # if the playlist is not an album, shuffle it for random playback
