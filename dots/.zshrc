@@ -62,6 +62,7 @@ alias gco="git checkout"
 alias gd="git diff"
 alias gds="git diff --staged"
 alias gf="git fetch"
+alias gfp="git fetch --prune origin"
 alias gh="git stash --include-untracked"
 alias ghp="git stash pop"
 alias gl="git pull"
@@ -73,6 +74,7 @@ alias gmc="git merge --continue"
 alias gp="git push"
 alias gpf="git push --force-with-lease"
 alias gpo="git push origin \$(git branch --show-current)"
+alias gpu="git push --set-upstream origin \$(git branch --show-current)"
 alias gr="git rebase"
 alias gra="git rebase --abort"
 alias grc="git rebase --continue"
@@ -80,6 +82,8 @@ alias grm="git rebase main"
 alias grs="git restore"
 alias grt="git reset"
 alias gst="git status"
+alias gt="git tag"
+alias gw="git show"
 # misc
 alias ..="cd .."
 alias md="mkdir"
@@ -90,6 +94,9 @@ alias grep="grep --color=auto"
 alias cdconf="cd ~/code/syscfg/dots/.config"
 
 ## utilities
+gta () {
+    git tag -a "$1" -m "$1"
+}
 mcd () {
 	mkdir -p -- "$1" &&
 	cd -P -- "$1"
