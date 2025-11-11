@@ -1,0 +1,16 @@
+root=white,black
+border=green,black
+window=gray,black
+title=green,black
+label=white,black
+listbox=green,black
+actlistbox=gray,black
+sellistbox=black,green
+actsellistbox=black,green
+button=black,green
+actbutton=green,gray
+compbutton=black,green
+compactbutton=green,gray
+checkbox=green,gray
+actcheckbox=black,green
+entry=green,gray

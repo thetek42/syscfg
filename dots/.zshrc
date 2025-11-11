@@ -25,6 +25,9 @@ export EDITOR=$NVIM
 export VISUAL=$NVIM
 export MANPAGER="$NVIM \"+set signcolumn=no\" +Man!"
 
+## color scheme for newt (e.g. nmtui)
+export NEWT_COLORS=$(<~/.config/newt/palette)
+
 ## path
 typeset -U path PATH
 path=(
