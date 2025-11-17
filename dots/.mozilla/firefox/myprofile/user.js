@@ -101,6 +101,8 @@ user_pref("network.http.referer.XOriginTrimmingPolicy", 2);
 user_pref("pdfjs.enableScripting", false);
 user_pref("privacy.userContext.ui.enabled", true);
 user_pref("security.mixed_content.block_display_content", true);
+user_pref("browser.gesture.swipe.left", "cmd_scrollLeft");
+user_pref("browser.gesture.swipe.right", "cmd_scrollRight");
 
 // devtools
 user_pref("devtools.everOpened", true);
