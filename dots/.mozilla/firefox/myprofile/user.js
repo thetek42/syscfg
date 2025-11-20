@@ -76,11 +76,14 @@ user_pref("browser.download.manager.addToRecentDocs", false);
 user_pref("browser.download.open_pdf_attachments_inline", true);
 user_pref("browser.download.useDownloadDir", false);
 user_pref("browser.formfill.enable", false);
+user_pref("browser.gesture.swipe.left", "cmd_scrollLeft");
+user_pref("browser.gesture.swipe.right", "cmd_scrollRight");
 user_pref("browser.menu.showViewImageInfo", true);
 user_pref("browser.preferences.experimental.hidden", false);
 user_pref("browser.safebrowsing.downloads.remote.enabled", false);
 user_pref("browser.search.separatePrivateDefault.ui.enabled", true);
 user_pref("browser.search.suggest.enabled", false);
+user_pref("browser.tabs.closeWindowWithLastTab", false);
 user_pref("browser.tabs.groups.smart.userEnabled", false);
 user_pref("browser.tabs.hoverPreview.showThumbnails", false);
 user_pref("browser.urlbar.groupLabels.enabled", false);
@@ -101,8 +104,6 @@ user_pref("network.http.referer.XOriginTrimmingPolicy", 2);
 user_pref("pdfjs.enableScripting", false);
 user_pref("privacy.userContext.ui.enabled", true);
 user_pref("security.mixed_content.block_display_content", true);
-user_pref("browser.gesture.swipe.left", "cmd_scrollLeft");
-user_pref("browser.gesture.swipe.right", "cmd_scrollRight");
 
 // devtools
 user_pref("devtools.everOpened", true);
