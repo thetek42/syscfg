@@ -71,8 +71,8 @@ bindsym $mod+w exec $browser
 bindsym $mod+z exec $pdfreader
 bindsym $mod+Shift+o exec ~/bin/select-playlist.sh
 # function keys
-bindsym XF86MonBrightnessDown exec .config/sway/backlight.py dec
-bindsym XF86MonBrightnessUp   exec .config/sway/backlight.py inc
+bindsym XF86MonBrightnessDown exec bin/backlight.py dec
+bindsym XF86MonBrightnessUp   exec bin/backlight.py inc
 bindsym XF86AudioMute         exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioLowerVolume  exec pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +2%
