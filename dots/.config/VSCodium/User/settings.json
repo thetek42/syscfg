@@ -1,0 +1,145 @@
+{
+    "editor.bracketPairColorization.enabled": false,
+    "editor.codeLens": false,
+    "editor.fontFamily": "\"Adwaita Mono\"",
+    "editor.fontSize": 15,
+    "editor.inlayHints.enabled": "off",
+    "editor.minimap.enabled": false,
+    "editor.occurrencesHighlight": "off",
+    "editor.rulers": [
+        {
+            "color": "#333333",
+            "column": 80
+        }
+    ],
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.excludeGitIgnore": true,
+    "files.associations": {
+        "*.h": "c"
+    },
+    "workbench.colorTheme": "No Clown Fiesta Theme",
+    "workbench.startupEditor": "none",
+    "workbench.tree.indent": 16,
+    "zig.zls.enabled": "on",
+    "zig.zls.path": "zls",
+    "[c]": {
+        "editor.tabSize": 8,
+        "editor.useTabStops": true
+    },
+    "editor.tokenColorCustomizations": {
+        "[No Clown Fiesta Theme]": {
+            "textMateRules": [
+                {
+                    "scope": "constant.language",
+                    "settings": {
+                        "foreground": "#e1e1e1"
+                    }
+                },
+                {
+                    "scope": "constant.numeric",
+                    "settings": {
+                        "foreground": "#e1e1e1"
+                    }
+                },
+                {
+                    "scope": "entity.name",
+                    "settings": {
+                        "fontStyle": ""
+                    }
+                },
+                {
+                    "scope": "keyword.control",
+                    "settings": {
+                        "foreground": "#7e97ab"
+                    }
+                },
+                {
+                    "scope": "keyword.other.crate",
+                    "settings": {
+                        "foreground": "#7e97ab"
+                    }
+                },
+                {
+                    "scope": "keyword.other.fn",
+                    "settings": {
+                        "foreground": "#7e97ab"
+                    }
+                },
+                {
+                    "scope": "keyword.other.rust",
+                    "settings": {
+                        "foreground": "#7e97ab"
+                    }
+                },
+                {
+                    "scope": "keyword.other.typedef",
+                    "settings": {
+                        "foreground": "#7e97ab"
+                    }
+                },
+                {
+                    "scope": "keyword.other.unit",
+                    "settings": {
+                        "foreground": "#e1e1e1"
+                    }
+                },
+                {
+                    "scope": "meta.function-call",
+                    "settings": {
+                        "foreground": "#e1e1e1"
+                    }
+                },
+                {
+                    "scope": "punctuation",
+                    "settings": {
+                        "foreground": "#e1e1e1"
+                    }
+                },
+                {
+                    "scope": "punctuation.definition.directive",
+                    "settings": {
+                        "foreground": "#627a8d"
+                    }
+                },
+                {
+                    "scope": "storage.type",
+                    "settings": {
+                        "foreground": "#e1e1e1"
+                    }
+                },
+                {
+                    "scope": "storage.type.enum",
+                    "settings": {
+                        "foreground": "#7e97ab"
+                    }
+                },
+                {
+                    "scope": "storage.type.function",
+                    "settings": {
+                        "foreground": "#7e97ab"
+                    }
+                },
+                {
+                    "scope": "storage.type.rust",
+                    "settings": {
+                        "foreground": "#7e97ab"
+                    }
+                },
+                {
+                    "scope": "storage.type.struct",
+                    "settings": {
+                        "foreground": "#7e97ab"
+                    }
+                },
+                {
+                    "scope": "support.type.posix-reserved",
+                    "settings": {
+                        "foreground": "#e1e1e1",
+                        "fontStyle": ""
+                    }
+                }
+            ]
+        }
+    }
+}
