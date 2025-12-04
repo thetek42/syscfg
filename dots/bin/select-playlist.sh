@@ -7,15 +7,15 @@ playlists="$(mpc lsplaylists | sort)"
 playlist="$(echo "$playlists" | wmenu -i -f "Roboto Mono 10" -N 151515 -n bbbbbb -S 304f50 -s e1e1e1)"
 
 # get list of songs in that playlist
-songs="$(mpc -f "%disc% %track% %file%" playlist "$playlist")"
+songs="$(mpc -f "%disc%-%track% %file%" playlist "$playlist")"
 
 # if the playlist is an album, sort by the track number to play it in order
 if [[ "$playlist" == "A: "* ]]; then
-	songs="$(echo "$songs" | sort -n)"
+	songs="$(echo "$songs" | sort -t - -k 1n -k 2n)"
 fi
 
 # extract file name from song list by stripping the initial album track number
-files="$(echo "$songs" | cut -d ' ' -f 3-)"
+files="$(echo "$songs" | cut -d ' ' -f 2-)"
 
 # check if there is a queued song. if not, clear the queue to ensure that it
 # isn't re-populated with the previously queued songs
