@@ -97,6 +97,12 @@
                     }
                 },
                 {
+                    "scope": "meta.function-call.generic",
+                    "settings": {
+                        "foreground": "#88afa2"
+                    }
+                },
+                {
                     "scope": "markup.bold",
                     "settings": {
                         "fontStyle": "bold"
@@ -173,6 +179,18 @@
                     "settings": {
                         "foreground": "#e1e1e1",
                         "fontStyle": ""
+                    }
+                },
+                {
+                    "scope": "support.type.property-name",
+                    "settings": {
+                        "fontStyle": "",
+                    }
+                },
+                {
+                    "scope": "support.type.property-name.table",
+                    "settings": {
+                        "fontStyle": "bold",
                     }
                 }
             ]
