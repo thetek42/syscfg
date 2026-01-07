@@ -144,6 +144,12 @@ configure_xdg_user_dirs () {
 	xdg-user-dirs-update
 }
 
+configure_xdg_settings () {
+	message "configuring xdg settings"
+	cp ./misc/custom-firefox.desktop "$HOME/.local/share/applications"
+	xdg-settings set default-web-browser custom-firefox.desktop
+}
+
 set_custom_keyboard_layout () {
 	message "setting custom keyboard layout"
 	sudo cp misc/keyboard-layout.xkb /usr/share/X11/xkb/symbols/demod
@@ -209,6 +215,7 @@ disable_pc_speaker
 update_dotfiles
 #download_nvim_spell_files
 configure_xdg_user_dirs
+configure_xdg_settings
 install_zsh_plugins
 setup_plocate_database
 setup_services
