@@ -4,6 +4,7 @@
     "editor.fontFamily": "\"Adwaita Mono\"",
     "editor.fontSize": 15,
     "editor.inlayHints.enabled": "off",
+    "editor.lightbulb.enabled": "off",
     "editor.minimap.enabled": false,
     "editor.occurrencesHighlight": "off",
     "editor.rulers": [
@@ -12,12 +13,14 @@
             "column": 80
         }
     ],
+    "explorer.autoReveal": false,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "explorer.excludeGitIgnore": true,
     "files.associations": {
         "*.h": "c"
     },
+    "vim.highlightedyank.enable": true,
     "workbench.colorTheme": "No Clown Fiesta Theme",
     "workbench.startupEditor": "none",
     "workbench.tree.indent": 16,
@@ -195,5 +198,17 @@
                 }
             ]
         }
+    },
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#151515",
+        "editor.background": "#151515",
+        "editorCursor.foreground": "#88afa2",
+        "editorGroupHeader.tabsBackground": "#151515",
+        "sideBar.background": "#151515",
+        "sideBarSectionHeader.background": "#151515",
+        "statusBar.background": "#151515",
+        "tab.inactiveBackground": "#151515",
+        "titleBar.activeBackground": "#151515",
+        "titleBar.inactiveBackground": "#151515",
     }
 }
