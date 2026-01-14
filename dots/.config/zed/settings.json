@@ -1,0 +1,32 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "No Clown Fiesta",
+  },
+  "buffer_font_family": "Adwaita Mono",
+  "line_indicator_format": "short",
+  "agent": { "button": false },
+  "collaboration_panel": { "button": false },
+  "features": {
+    "edit_prediction_provider": "none",
+  },
+  "title_bar": {
+    "show_sign_in": false,
+  },
+  "soft_wrap": "none",
+  "preferred_line_length": 80,
+  "show_wrap_guides": true,
+  "wrap_guides": [80],
+}
