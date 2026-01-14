@@ -3,6 +3,7 @@
     "editor.codeLens": false,
     "editor.fontFamily": "\"Adwaita Mono\"",
     "editor.fontSize": 15,
+    "editor.formatOnSave": true,
     "editor.inlayHints.enabled": "off",
     "editor.lightbulb.enabled": "off",
     "editor.minimap.enabled": false,
@@ -29,6 +30,9 @@
     "[c]": {
         "editor.tabSize": 8,
         "editor.useTabStops": true
+    },
+    "[toml]": {
+        "editor.formatOnSave": false
     },
     "editor.tokenColorCustomizations": {
         "[No Clown Fiesta Theme]": {
@@ -124,6 +128,12 @@
                     }
                 },
                 {
+                    "scope": "markup.inline.raw.string,comment.block.documentation",
+                    "settings": {
+                        "foreground": "#727272"
+                    }
+                },
+                {
                     "scope": "markup.italic",
                     "settings": {
                         "fontStyle": "italic"
@@ -151,6 +161,12 @@
                     "scope": "storage.type",
                     "settings": {
                         "foreground": "#e1e1e1"
+                    }
+                },
+                {
+                    "scope": "storage.type.class.doxygen",
+                    "settings": {
+                        "foreground": "#727272"
                     }
                 },
                 {
@@ -194,6 +210,12 @@
                     "scope": "support.type.property-name.table",
                     "settings": {
                         "fontStyle": "bold",
+                    }
+                },
+                {
+                    "scope": "variable.parameter.c,comment.block.documentation",
+                    "settings": {
+                        "foreground": "#727272"
                     }
                 }
             ]
