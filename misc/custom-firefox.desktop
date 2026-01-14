@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Exec=/usr/lib/firefox/firefox --no-remote --profile .mozilla/firefox/myprofile %u
+Exec=sh firefox.sh %u
 Terminal=false
 X-MultipleArgs=false
 Icon=firefox
