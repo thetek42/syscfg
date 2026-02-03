@@ -7,6 +7,10 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
   "vim_mode": true,
   "ui_font_size": 16,
   "buffer_font_size": 15,
@@ -29,4 +33,14 @@
   "preferred_line_length": 80,
   "show_wrap_guides": true,
   "wrap_guides": [80],
+  "languages": {
+    "CSS": {
+      "format_on_save": "off",
+      "tab_size": 2,
+    },
+    "HTML": {
+      "format_on_save": "off",
+      "tab_size": 2,
+    },
+  },
 }
