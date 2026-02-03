@@ -92,6 +92,11 @@ alias wcl="wc -l"
 alias py="python3"
 alias grep="grep --color=auto"
 alias cdconf="cd ~/code/syscfg/dots/.config"
+alias c="cargo"
+alias cb="cargo build"
+alias cr="cargo run"
+alias zb="zig build"
+alias zr="zig build run"
 
 ## utilities
 gta () {
