@@ -148,6 +148,7 @@ configure_xdg_settings () {
 	message "configuring xdg settings"
 	cp ./misc/custom-firefox.desktop "$HOME/.local/share/applications"
 	xdg-settings set default-web-browser custom-firefox.desktop
+	xdg-mime default org.gnome.Nautilus.desktop inode/directory
 }
 
 set_custom_keyboard_layout () {
