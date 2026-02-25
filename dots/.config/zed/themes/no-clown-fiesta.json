@@ -18,8 +18,8 @@
         "players": [
           {
             "cursor": "#88afa2",
-            "selection": "#88afa244",
-          },
+            "selection": "#88afa244"
+          }
         ],
         "syntax": {
           "attribute": { "color": "#e1e1e1" },
@@ -39,6 +39,7 @@
           "number": { "color": "#e1e1e1" },
           "preproc": { "color": "#7e97ab" },
           "string": { "color": "#a2b5c1" },
+          "string.doc": { "color": "#727272" },
           "string.escape": { "color": "#a2b5c1" },
           "string.regex": { "color": "#a2b5c1" },
           "string.special": { "color": "#a2b5c1" },
@@ -48,9 +49,9 @@
           "title": { "color": "#88afa2" },
           "type": { "color": "#e1e1e1" },
           "variable": { "color": "#e1e1e1" },
-          "variable.special": { "color": "#e1e1e1" },
-        },
-      },
-    },
-  ],
+          "variable.special": { "color": "#e1e1e1" }
+        }
+      }
+    }
+  ]
 }

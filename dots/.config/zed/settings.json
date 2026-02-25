@@ -23,8 +23,8 @@
   "line_indicator_format": "short",
   "agent": { "button": false },
   "collaboration_panel": { "button": false },
-  "features": {
-    "edit_prediction_provider": "none",
+  "edit_predictions": {
+    "provider": "none",
   },
   "title_bar": {
     "show_sign_in": false,
@@ -36,11 +36,17 @@
   "languages": {
     "CSS": {
       "format_on_save": "off",
-      "tab_size": 2,
+      "tab_size": 4,
     },
     "HTML": {
       "format_on_save": "off",
       "tab_size": 2,
+    },
+    "Python": {
+      "format_on_save": "off",
+    },
+    "XML": {
+      "format_on_save": "off",
     },
   },
 }
