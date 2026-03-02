@@ -1,0 +1,32 @@
+{
+  "plugins": {
+    "mini.bufremove": {
+      "rev": "ee69f823f84508c556127a5882760d9783692023",
+      "src": "https://github.com/nvim-mini/mini.bufremove"
+    },
+    "mini.pick": {
+      "rev": "8521fe21df86e08d9e4b3c3f3a7d50e47954e1af",
+      "src": "https://github.com/nvim-mini/mini.pick"
+    },
+    "no-clown-fiesta.nvim": {
+      "rev": "04b808e9769ded988089772ffcaf08d92d75d927",
+      "src": "https://github.com/aktersnurra/no-clown-fiesta.nvim"
+    },
+    "nvim-treesitter": {
+      "rev": "42fc28ba918343ebfd5565147a42a26580579482",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "oil.nvim": {
+      "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
+      "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "typst-preview.nvim": {
+      "rev": "bf5d5eaf23bbfcca9f98a24ed29bd084abf89bf2",
+      "src": "https://github.com/chomosuke/typst-preview.nvim"
+    },
+    "vim-stabs": {
+      "rev": "711c2bda40caf6be2d922af1093f1f19ac3a59bd",
+      "src": "https://github.com/Thyrum/vim-stabs"
+    }
+  }
+}
