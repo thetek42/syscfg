@@ -52,6 +52,60 @@
           "variable.special": { "color": "#e1e1e1" }
         }
       }
+    },
+    {
+      "name": "No Clown Fiesta Light",
+      "appearance": "light",
+      "style": {
+        "background": "#ffffff",
+        "foreground": "#151515",
+        "accent": "#178260",
+        "created": "#178260bb",
+        "deleted": "#984936e8",
+        "error": "#984936",
+        "modified": "#bd740fe8",
+        "search.match_background": "#604d3244",
+        "search.active_match_background": "#ab8550aa",
+        "warning": "#bd740f",
+        "warning.background": "#bd740f44",
+        "warning.border": "#bd740f",
+        "players": [
+          {
+            "cursor": "#178260",
+            "selection": "#17826044"
+          }
+        ],
+        "syntax": {
+          "attribute": { "color": "#151515" },
+          "boolean": { "color": "#151515" },
+          "comment": { "color": "#909090" },
+          "comment.doc": { "color": "#909090" },
+          "constant": { "color": "#151515" },
+          "constructor": { "color": "#3e5f66" },
+          "embedded": { "color": "#727272" },
+          "emphasis": { "font_style": "italic" },
+          "emphasis_strong": { "font_weight": "bold" },
+          "function": { "color": "#178260" },
+          "keyword": { "color": "#1b5f98" },
+          "label": { "color": "#151515" },
+          "link_text": { "color": "#151515" },
+          "link_uri": { "color": "#408ebf" },
+          "number": { "color": "#151515" },
+          "preproc": { "color": "#1b5f98" },
+          "string": { "color": "#408ebf" },
+          "string.doc": { "color": "#909090" },
+          "string.escape": { "color": "#408ebf" },
+          "string.regex": { "color": "#408ebf" },
+          "string.special": { "color": "#408ebf" },
+          "string.special.symbol": { "color": "#408ebf" },
+          "tag": { "color": "#178260" },
+          "text.literal": { "color": "#408ebf" },
+          "title": { "color": "#178260" },
+          "type": { "color": "#151515" },
+          "variable": { "color": "#151515" },
+          "variable.special": { "color": "#151515" }
+        }
+      }
     }
   ]
 }

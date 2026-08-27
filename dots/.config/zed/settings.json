@@ -7,6 +7,40 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "window_decorations": "client",
+  "use_system_window_tabs": false,
+  "bottom_dock_layout": "contained",
+  "tab_bar": {
+    "show_tab_bar_buttons": true,
+    "show_pinned_tabs_in_separate_row": false
+  },
+  "tabs": {
+    "show_close_button": "hover",
+    "file_icons": false,
+    "git_status": true
+  },
+  "status_bar": {
+    "show_active_file": false,
+    "line_endings_button": true,
+    "active_language_button": true
+  },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)",
+  },
+  "cli_default_open_behavior": "new_window",
+  "project_panel": {
+    "button": true,
+    "auto_reveal_entries": false,
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "git_panel": {
+    "dock": "left",
+  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false,
@@ -16,30 +50,57 @@
   "buffer_font_size": 15,
   "theme": {
     "mode": "system",
-    "light": "One Light",
+    "light": "No Clown Fiesta Light",
     "dark": "No Clown Fiesta",
   },
   "buffer_font_family": "Adwaita Mono",
   "line_indicator_format": "short",
-  "agent": { "button": false },
-  "collaboration_panel": { "button": false },
+  "agent": { "dock": "right", "button": true },
+  "collaboration_panel": { "dock": "left", "button": false },
   "edit_predictions": {
     "provider": "none",
   },
   "title_bar": {
+    "button_layout": "platform_default",
+    "show_menus": false,
+    "show_onboarding_banner": false,
+    "show_branch_status_icon": false,
     "show_sign_in": false,
   },
+  "sticky_scroll": {
+    "enabled": true
+  },
   "soft_wrap": "none",
-  "preferred_line_length": 80,
+  "preferred_line_length": 100,
   "show_wrap_guides": true,
-  "wrap_guides": [80],
+  "wrap_guides": [100],
   "languages": {
+    "C": {
+      "format_on_save": "on",
+    },
+    "C++": {
+      "format_on_save": "on",
+    },
     "CSS": {
       "format_on_save": "off",
       "tab_size": 4,
     },
     "HTML": {
       "format_on_save": "off",
+      "preferred_line_length": 120,
+      "wrap_guides": [120],
+      "tab_size": 4,
+    },
+    "JavaScript": {
+      "tab_size": 4,
+    },
+    "Markdown": {
+      "tab_size": 4,
+    },
+    "LilyPond": {
+      "tab_size": 2,
+    },
+    "LilyPond Scheme": {
       "tab_size": 2,
     },
     "Python": {
@@ -48,5 +109,8 @@
     "XML": {
       "format_on_save": "off",
     },
+  },
+  "file_types": {
+    "C": ["c", "h"],
   },
 }
