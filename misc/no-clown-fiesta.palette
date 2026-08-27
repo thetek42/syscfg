@@ -1,0 +1,48 @@
+[Palette]
+Name=No Clown Fiesta
+
+[Dark]
+Background = #151515
+Foreground = #e1e1e1
+TitlebarBackground = #202020
+TitlebarForeground = #e1e1e1
+Cursor = #e1e1e1
+Color0 = #151515
+Color1 = #ac4142
+Color2 = #88afa2
+Color3 = #f4bf75
+Color4 = #73c0ff
+Color5 = #aa759f
+Color6 = #5f9ea0
+Color7 = #d0d0d0
+Color8 = #555555
+Color9 = #cd5c5c
+Color10 = #90a959
+Color11 = #ffdead
+Color12 = #a5d6ff
+Color13 = #cf75bc
+Color14 = #75b5aa
+Color15 = #e1e1e1
+
+[Light]
+Background = #FFFFFF
+Foreground = #151515
+TitlebarBackground = #FFFFFF
+TitlebarForeground = #151515
+Cursor = #151515
+Color0 = #FFFFFF
+Color1 = #c6393c
+Color2 = #178260
+Color3 = #d48311
+Color4 = #008cff
+Color5 = #9e6192
+Color6 = #4d7e80
+Color7 = #151515
+Color8 = #909090
+Color9 = #c6393c
+Color10 = #178260
+Color11 = #d48311
+Color12 = #008cff
+Color13 = #9e6192
+Color14 = #4d7e80
+Color15 = #151515
